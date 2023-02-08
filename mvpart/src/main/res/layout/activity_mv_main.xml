@@ -6,13 +6,77 @@
     android:layout_height="match_parent"
     tools:context=".MvMainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+
+    <FrameLayout
+        android:id="@+id/fragment_contain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/home_rg"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- android:background="@android:color/holo_blue_bright"-->
+
+    <RadioGroup
+        android:id="@+id/home_rg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <RadioButton
+            android:id="@+id/home_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="@string/home_page_bottom_title_name"
+            android:textColor="@drawable/home_bottom_tab_text_seclector" />
+
+        <RadioButton
+            android:id="@+id/ticket_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/tickect_page_bottom_title_name"
+            android:textColor="@drawable/home_bottom_tab_text_seclector" />
+
+        <Button
+            android:id="@+id/publish_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/publish_page_bottom_title_name"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/discuss_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/discuss_page_bottom_title_name"
+            android:textColor="@drawable/home_bottom_tab_text_seclector" />
+
+        <RadioButton
+            android:id="@+id/mine_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/mine_page_bottom_title_name"
+            android:textColor="@drawable/home_bottom_tab_text_seclector" />
+
+    </RadioGroup>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

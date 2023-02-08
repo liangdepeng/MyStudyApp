@@ -11,6 +11,10 @@
         android:theme="@style/Theme.MvApp">
         <activity
             android:name=".MvMainActivity"
+            android:exported="false">
+        </activity>
+        <activity android:name=".MvLauncherActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
