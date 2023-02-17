@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.dpzz.lib_base.BaseActivity;
 import com.dpzz.lib_base.CountdownUtil;
+import com.dpzz.lib_base.ToastUtil;
 import com.dpzz.mvpart.databinding.ActivityMvSplashBinding;
 
 public class MvLauncherActivity extends BaseActivity<ActivityMvSplashBinding> {
@@ -17,11 +18,12 @@ public class MvLauncherActivity extends BaseActivity<ActivityMvSplashBinding> {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ToastUtil.init(getApplicationContext());
     }
 
     @Override
     public void initData() {
-        CountdownUtil.start(5, new CountdownUtil.CallbackAdapter() {
+        CountdownUtil.start(95, new CountdownUtil.CallbackAdapter() {
             @Override
             public void onValueUpdate(int value) {
                 mViewBinding.helloTxt.setText(value + " 秒后进入主页");
@@ -42,5 +44,6 @@ public class MvLauncherActivity extends BaseActivity<ActivityMvSplashBinding> {
             startActivity(new Intent(MvLauncherActivity.this, MvMainActivity.class));
             finish();
         });
+
     }
 }

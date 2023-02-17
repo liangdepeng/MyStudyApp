@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">mvpart</string>
     <string name="home_page_bottom_title_name">首页</string>
+    <string name="home_search">点击搜索</string>
     <string name="tickect_page_bottom_title_name">购票</string>
     <string name="publish_page_bottom_title_name">发布</string>
     <string name="discuss_page_bottom_title_name">论坛</string>

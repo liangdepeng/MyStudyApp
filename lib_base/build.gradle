@@ -48,6 +48,17 @@ dependencies {
  //   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     api 'com.github.JavaNoober.BackgroundLibrary:libraryx:1.7.5'
+    api 'com.squareup.okhttp3:okhttp:4.10.0'
+    api 'com.github.getActivity:ToastUtils:11.2'
+    api 'com.google.code.gson:gson:2.10.1'
+
+    def lifecycle_version = "2.5.1"
+    def arch_version = "2.1.0"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
 }
 //repositories {
 //    mavenCentral()

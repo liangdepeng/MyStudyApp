@@ -11,7 +11,7 @@ import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<VB :ViewBinding> : Fragment() {
 
-    private lateinit var mViewBinding :VB
+    protected lateinit var mViewBinding :VB
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

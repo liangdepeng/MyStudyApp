@@ -13,7 +13,8 @@
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/activity_mv_main.xml" value="0.22" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/activity_mv_splash.xml" value="0.25" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/fragment_discuss.xml" value="0.16197916666666667" />
-        <entry key="..\:/movieStudy/mvpart/src/main/res/layout/fragment_home.xml" value="0.16197916666666667" />
+        <entry key="..\:/movieStudy/mvpart/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/movieStudy/mvpart/src/main/res/layout/fragment_home_recommand.xml" value="0.190625" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/fragment_mine.xml" value="0.16197916666666667" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/fragment_ticket.xml" value="0.16197916666666667" />
       </map>
