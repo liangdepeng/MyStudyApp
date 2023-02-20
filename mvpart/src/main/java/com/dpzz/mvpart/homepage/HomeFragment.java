@@ -11,14 +11,15 @@ import java.util.List;
 
 public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
 
-    private List<Fragment> fragments = new ArrayList<>();
-    private List<String> titles = new ArrayList<>();
+    private final List<Fragment> fragments = new ArrayList<>();
+    private final List<String> titles = new ArrayList<>();
 
     @Override
     public void initContentView() {
         initData();
         HomeFragmentPagerAdapter adapter = new HomeFragmentPagerAdapter(getChildFragmentManager(), fragments, titles);
         mViewBinding.viewpager.setAdapter(adapter);
+        mViewBinding.viewpager.setOffscreenPageLimit(2);
         mViewBinding.tabLayout.setupWithViewPager(mViewBinding.viewpager);
     }
 

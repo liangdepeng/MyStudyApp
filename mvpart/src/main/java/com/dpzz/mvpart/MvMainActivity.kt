@@ -38,14 +38,14 @@ class MvMainActivity : BaseActivity<ActivityMvMainBinding>(), RadioGroup.OnCheck
             return
         val supportFragmentManager = supportFragmentManager
         val beginTransaction = supportFragmentManager.beginTransaction()
+        beginTransaction.hide(lastFragment)
         if (fragment.isAdded) {
             beginTransaction.show(fragment)
-            beginTransaction.hide(lastFragment)
         } else {
             beginTransaction.add(R.id.fragment_contain, fragment)
         }
-        lastFragment = fragment
         beginTransaction.commitAllowingStateLoss()
+        lastFragment = fragment
     }
 
     override fun initView() {
