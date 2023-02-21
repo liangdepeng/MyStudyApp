@@ -1,5 +1,6 @@
 package com.dpzz.lib_base
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,9 +13,15 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseFragment<VB :ViewBinding> : Fragment() {
 
     protected lateinit var mViewBinding :VB
+    protected lateinit var mContext :Activity
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+    }
+
+    override fun onAttach(activity: Activity) {
+        super.onAttach(activity)
+        mContext = activity
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
