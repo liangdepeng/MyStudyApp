@@ -6,9 +6,9 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.dpzz.lib_base.BaseActivity;
-import com.dpzz.lib_base.CountdownUtil;
-import com.dpzz.lib_base.ToastUtil;
+import com.dpzz.lib_base.base.BaseActivity;
+import com.dpzz.lib_base.util.CountdownUtil;
+import com.dpzz.lib_base.util.ToastUtil;
 import com.dpzz.mvpart.databinding.ActivityMvSplashBinding;
 
 public class MvLauncherActivity extends BaseActivity<ActivityMvSplashBinding> {

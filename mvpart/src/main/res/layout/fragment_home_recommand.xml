@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.youth.banner.Banner
         android:id="@+id/banner"
@@ -11,4 +13,51 @@
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RadioGroup
+        android:id="@+id/mv_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/first_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="正在热映"
+            app:bl_checked_textColor="@color/black"
+            app:bl_unChecked_textColor="@android:color/darker_gray"
+            tools:text="测试一" />
+
+        <RadioButton
+            android:id="@+id/second_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="待映推荐"
+            app:bl_checked_textColor="@color/black"
+            app:bl_unChecked_textColor="@android:color/darker_gray"
+            tools:text="测试2" />
+
+    </RadioGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recommend_mv_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="12dp" />
+
+</LinearLayout>

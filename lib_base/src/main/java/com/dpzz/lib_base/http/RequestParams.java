@@ -31,7 +31,7 @@ public class RequestParams {
         return this;
     }
 
-    public <T> RequestParams setParseClass(Class<T> aclass) {
+    public RequestParams setParseClass(Class<?> aclass) {
         this.aClass = aclass;
         return this;
     }

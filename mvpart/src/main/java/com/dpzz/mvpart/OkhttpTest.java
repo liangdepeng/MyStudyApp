@@ -2,7 +2,7 @@ package com.dpzz.mvpart;
 
 import androidx.annotation.NonNull;
 
-import com.dpzz.lib_base.ToastUtil;
+import com.dpzz.lib_base.util.ToastUtil;
 
 import java.io.IOException;
 

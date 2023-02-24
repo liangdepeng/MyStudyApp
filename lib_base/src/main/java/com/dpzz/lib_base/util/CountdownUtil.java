@@ -1,4 +1,4 @@
-package com.dpzz.lib_base;
+package com.dpzz.lib_base.util;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -8,7 +8,6 @@ import android.view.animation.LinearInterpolator;
 import java.util.HashMap;
 
 public class CountdownUtil {
-
 
     private static final HashMap<String, Animator> animatorHashMap = new HashMap<>(2);
 

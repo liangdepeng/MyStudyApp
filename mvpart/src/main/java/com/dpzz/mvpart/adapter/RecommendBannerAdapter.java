@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.dpzz.lib_base.PxUtils;
+import com.dpzz.lib_base.util.PxUtils;
 import com.dpzz.mvpart.R;
 import com.dpzz.mvpart.bean.RecommendBannerBean;
 import com.youth.banner.adapter.BannerAdapter;

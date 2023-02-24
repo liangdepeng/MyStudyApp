@@ -1,9 +1,9 @@
-package com.dpzz.lib_base
+package com.dpzz.lib_base.base
 
-import androidx.viewbinding.ViewBinding
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {

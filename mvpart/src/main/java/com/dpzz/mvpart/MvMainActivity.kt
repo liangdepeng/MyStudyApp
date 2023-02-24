@@ -3,8 +3,9 @@ package com.dpzz.mvpart
 import android.os.Bundle
 import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
-import com.dpzz.lib_base.BaseActivity
-import com.dpzz.lib_base.ToastUtil
+import com.dpzz.lib_base.GlobalContext
+import com.dpzz.lib_base.base.BaseActivity
+import com.dpzz.lib_base.util.ToastUtil
 import com.dpzz.mvpart.databinding.ActivityMvMainBinding
 import com.dpzz.mvpart.homepage.DiscussFragment
 import com.dpzz.mvpart.homepage.HomeFragment
@@ -23,6 +24,7 @@ class MvMainActivity : BaseActivity<ActivityMvMainBinding>(), RadioGroup.OnCheck
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ToastUtil.init(applicationContext)
+        GlobalContext.mContext = applicationContext
     }
 
     override fun initData() {

@@ -1,6 +1,8 @@
-package com.dpzz.lib_base;
+package com.dpzz.lib_base.base;
 
 import android.app.Application;
+
+import com.dpzz.lib_base.util.ToastUtil;
 
 public abstract class BaseApplication extends Application {
 

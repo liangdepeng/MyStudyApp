@@ -1,4 +1,4 @@
-package com.dpzz.lib_base;
+package com.dpzz.lib_base.util;
 
 import android.util.Base64;
 
@@ -20,8 +20,8 @@ public class UrlUtil {
      * @param source
      * @return
      */
-    public static byte[] decode(String source) {
-        return Base64.decode(source,Base64.DEFAULT);
+    public static String decode(String source) {
+        return new String(Base64.decode(source,Base64.DEFAULT));
     }
 
 }

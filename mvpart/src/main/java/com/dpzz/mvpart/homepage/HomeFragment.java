@@ -2,7 +2,7 @@ package com.dpzz.mvpart.homepage;
 
 import androidx.fragment.app.Fragment;
 
-import com.dpzz.lib_base.BaseFragment;
+import com.dpzz.lib_base.base.BaseFragment;
 import com.dpzz.mvpart.adapter.HomeFragmentPagerAdapter;
 import com.dpzz.mvpart.databinding.FragmentHomeBinding;
 
@@ -19,7 +19,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
         initData();
         HomeFragmentPagerAdapter adapter = new HomeFragmentPagerAdapter(getChildFragmentManager(), fragments, titles);
         mViewBinding.viewpager.setAdapter(adapter);
-        mViewBinding.viewpager.setOffscreenPageLimit(2);
+        mViewBinding.viewpager.setOffscreenPageLimit(fragments.size());
         mViewBinding.tabLayout.setupWithViewPager(mViewBinding.viewpager);
     }
 

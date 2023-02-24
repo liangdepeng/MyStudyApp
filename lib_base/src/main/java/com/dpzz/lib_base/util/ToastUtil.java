@@ -1,4 +1,4 @@
-package com.dpzz.lib_base;
+package com.dpzz.lib_base.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

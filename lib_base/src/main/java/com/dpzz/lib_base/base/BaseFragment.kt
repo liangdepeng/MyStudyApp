@@ -1,4 +1,4 @@
-package com.dpzz.lib_base
+package com.dpzz.lib_base.base
 
 import android.app.Activity
 import android.content.Context

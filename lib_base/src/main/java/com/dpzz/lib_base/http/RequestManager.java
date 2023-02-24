@@ -6,7 +6,7 @@ import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 
-import com.dpzz.lib_base.UrlUtil;
+import com.dpzz.lib_base.util.UrlUtil;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -27,7 +27,7 @@ import okhttp3.Response;
 public class RequestManager {
 
     private OkHttpClient client;
-    private Handler handler = new Handler(Looper.getMainLooper());
+    private final Handler handler = new Handler(Looper.getMainLooper());
     private final MediaType JSON = MediaType.get("application/json");
 
     private final static class Instance {
@@ -62,7 +62,7 @@ public class RequestManager {
         }
 
         if (!url.startsWith("http")) {
-            url = new String(UrlUtil.decode(url));
+            url = UrlUtil.decode(url);
         }
 
         Request.Builder builder = new Request.Builder()
@@ -92,9 +92,11 @@ public class RequestManager {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                if (callback != null) {
-                    callback.onFailed(requestParams, e);
-                }
+                handler.post(() -> {
+                    if (callback != null) {
+                        callback.onFailed(requestParams, e);
+                    }
+                });
             }
 
             @Override
