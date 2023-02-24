@@ -15,12 +15,14 @@ public class BaseViewHolder<VB extends ViewBinding> extends RecyclerView.ViewHol
 
     public final void bindViewClickListener(final BaseRecyclerViewAdapter adapter, OnMyItemClickListener itemClickListener) {
         itemView.setOnClickListener(v -> {
+
             if (itemClickListener == null)
                 return;
             int position = getAdapterPosition();
             if (position == RecyclerView.NO_POSITION)
                 return;
             itemClickListener.onItemClick(adapter, position);
+//            ToastUtil.show("--"+position);
         });
     }
 
@@ -32,6 +34,7 @@ public class BaseViewHolder<VB extends ViewBinding> extends RecyclerView.ViewHol
             if (position == RecyclerView.NO_POSITION)
                 return false;
             itemClickListener.onItemLongClick(adapter, position);
+//            ToastUtil.show("--"+position);
             return true;
         });
     }

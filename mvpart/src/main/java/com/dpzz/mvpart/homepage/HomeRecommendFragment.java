@@ -1,5 +1,6 @@
 package com.dpzz.mvpart.homepage;
 
+import android.content.Intent;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
@@ -9,8 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dpzz.lib_base.base.BaseFragment;
+import com.dpzz.lib_base.recyclerview.BaseRecyclerViewAdapter;
+import com.dpzz.lib_base.recyclerview.OnMyItemClickListener;
 import com.dpzz.lib_base.util.PxUtils;
 import com.dpzz.lib_base.util.ToastUtil;
+import com.dpzz.lib_video.VideoActivity;
 import com.dpzz.mvpart.R;
 import com.dpzz.mvpart.adapter.RecommendAdapter3;
 import com.dpzz.mvpart.adapter.RecommendBannerAdapter;
@@ -51,6 +55,13 @@ public class HomeRecommendFragment extends BaseFragment<FragmentHomeRecommandBin
 
         mViewBinding.recommendMvRv.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false));
         recommendMvAdapter = new RecommendAdapter3(mContext);
+        recommendMvAdapter.setItemClickListener(new OnMyItemClickListener() {
+            @Override
+            public void onItemClick(BaseRecyclerViewAdapter adapter, int position) {
+                startActivity(new Intent(mContext, VideoActivity.class));
+            }
+        });
+
         mViewBinding.recommendMvRv.setAdapter(recommendMvAdapter);
 
         mViewBinding.mvRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

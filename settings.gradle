@@ -17,3 +17,4 @@ rootProject.name = "MvApp"
 include ':app'
 include ':lib_base'
 include ':mvpart'
+include ':lib_video'

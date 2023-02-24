@@ -2,7 +2,6 @@ package com.dpzz.lib_base.recyclerview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -60,12 +59,6 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         onBindMyViewHolder(holder, mDatas.get(position), position);
     }
 

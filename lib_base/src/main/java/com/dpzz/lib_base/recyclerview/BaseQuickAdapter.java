@@ -25,9 +25,9 @@ public abstract class BaseQuickAdapter<T, VB extends ViewBinding> extends BaseRe
     @Override
     protected BaseViewHolder<VB> onCreateMyViewHolder(ViewGroup parent, int viewType) {
         BaseViewHolder<VB> viewHolder = new BaseViewHolder<>(getItemViewBinding(parent));
-        viewHolder.bindViewClickListener(this, itemClickListener);
-        viewHolder.bindViewLongClickListener(this, itemLongClickListener);
-        return new BaseViewHolder<>(getItemViewBinding(parent));
+        viewHolder.bindViewClickListener(this,itemClickListener);
+        viewHolder.bindViewLongClickListener(this,itemLongClickListener);
+        return viewHolder;
     }
 
     protected abstract VB getItemViewBinding(ViewGroup parent);
