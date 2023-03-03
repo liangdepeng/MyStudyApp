@@ -19,7 +19,7 @@ public class RecommendMvBean implements Serializable {
         @SerializedName("moviecomings")
         public List<MoviesDataBean> moviecomings;
         @SerializedName("totalMovieComings")
-        public Integer totalMovieComings;
+        public int totalMovieComings;
     }
 
     public static class RecommendsDataBean {
@@ -34,9 +34,9 @@ public class RecommendMvBean implements Serializable {
         @SerializedName("imgUrl")
         public String imgUrl;
         @SerializedName("videoId")
-        public Integer videoId;
+        public int videoId;
         @SerializedName("movieId")
-        public Integer movieId;
+        public int movieId;
         @SerializedName("score")
         public String score;
         @SerializedName("movieCn")
@@ -46,9 +46,9 @@ public class RecommendMvBean implements Serializable {
         @SerializedName("title")
         public String title;
         @SerializedName("currentType")
-        public Integer currentType;
+        public int currentType;
         @SerializedName("btnShow")
-        public Integer btnShow;
+        public int btnShow;
         @SerializedName("directorName")
         public String directorName;
         @SerializedName("actorNames")
@@ -58,7 +58,7 @@ public class RecommendMvBean implements Serializable {
         @SerializedName("duration")
         public String duration;
         @SerializedName("wantedCount")
-        public Integer wantedCount;
+        public int wantedCount;
         @SerializedName("releaseDate")
         public Long releaseDate;
         @SerializedName("releaseDateStr")
@@ -84,11 +84,11 @@ public class RecommendMvBean implements Serializable {
         @SerializedName("summary")
         public String summary;
         @SerializedName("releaseYear")
-        public Integer releaseYear;
+        public int releaseYear;
         @SerializedName("releaseMonth")
-        public Integer releaseMonth;
+        public int releaseMonth;
         @SerializedName("releaseDay")
-        public Integer releaseDay;
+        public int releaseDay;
         @SerializedName("director")
         public String director;
         @SerializedName("actors")

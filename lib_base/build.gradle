@@ -44,29 +44,36 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'androidx.core:core-ktx:1.3.2'
-  //  implementation "androidx.core:core-ktx:+"
- //   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //  implementation "androidx.core:core-ktx:+"
+    //   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    // glide 图片加载
     api 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+    // 不用再手写xml shape selector 等
     api 'com.github.JavaNoober.BackgroundLibrary:libraryx:1.7.5'
+    // 网络请求okhttp
     api 'com.squareup.okhttp3:okhttp:4.10.0'
+    // 安全弹出 toast
     api 'com.github.getActivity:ToastUtils:11.2'
+    // json 数据解析
     api 'com.google.code.gson:gson:2.10.1'
+    // banner 框架
     api 'io.github.youth5201314:banner:2.2.2'
-
-    api  'io.github.scwang90:refresh-layout-kernel:2.0.5'      //核心必须依赖
-    api  'io.github.scwang90:refresh-header-classics:2.0.5'    //经典刷新头
+    // 下拉刷新框架
+    api 'io.github.scwang90:refresh-layout-kernel:2.0.5'      //核心必须依赖
+    api 'io.github.scwang90:refresh-header-classics:2.0.5'    //经典刷新头
 //    api  'io.github.scwang90:refresh-header-radar:2.0.5'       //雷达刷新头
 //    api  'io.github.scwang90:refresh-header-falsify:2.0.5'     //虚拟刷新头
 //    api  'io.github.scwang90:refresh-header-material:2.0.5'    //谷歌刷新头
 //    api  'io.github.scwang90:refresh-header-two-level:2.0.5'   //二级刷新头
 //    api  'io.github.scwang90:refresh-footer-ball:2.0.5'        //球脉冲加载
-    api  'io.github.scwang90:refresh-footer-classics:2.0.5'    //经典加载
+    api 'io.github.scwang90:refresh-footer-classics:2.0.5'    //经典加载
+    // eventbus 解耦的消息通知框架
+    api "org.greenrobot:eventbus:3.3.1"
 
     def lifecycle_version = "2.5.1"
     def arch_version = "2.1.0"
-
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
     // LiveData

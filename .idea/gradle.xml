@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/lib_base" />
             <option value="$PROJECT_DIR$/lib_video" />
             <option value="$PROJECT_DIR$/mvpart" />
+            <option value="$PROJECT_DIR$/weatherpart" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -12,22 +12,12 @@ import java.util.List;
 
 public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
 
-//    private OnMyItemClickListener itemClickListener;
-//    private OnMyItemLongClickListener itemLongClickListener;
     protected List<T> mDatas = new ArrayList<>();
     protected Context mContext;
 
     public BaseRecyclerViewAdapter(Context mContext) {
         this.mContext = mContext;
     }
-
-//    public void setItemClickListener(OnMyItemClickListener itemClickListener) {
-//        this.itemClickListener = itemClickListener;
-//    }
-//
-//    public void setItemLongClickListener(OnMyItemLongClickListener itemLongClickListener) {
-//        this.itemLongClickListener = itemLongClickListener;
-//    }
 
     @SuppressLint("NotifyDataSetChanged")
     public void setData(List<T> list) {
@@ -46,15 +36,19 @@ public abstract class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         }
     }
 
+    public List<T> getmDatas() {
+        return mDatas;
+    }
+
+    public T getItemData(int position){
+        return mDatas.get(position);
+    }
+
     @NonNull
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        VH vh = (VH) new BaseViewHolder<VB>(getItemViewBinding(parent));
-//        vh.bindViewClickListener(this,itemClickListener);
-//        vh.bindViewLongClickListener(this,itemLongClickListener);
         return onCreateMyViewHolder(parent,viewType);
     }
-
 
 
     @Override

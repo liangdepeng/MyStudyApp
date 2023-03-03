@@ -15,7 +15,6 @@ public class BaseViewHolder<VB extends ViewBinding> extends RecyclerView.ViewHol
 
     public final void bindViewClickListener(final BaseRecyclerViewAdapter adapter, OnMyItemClickListener itemClickListener) {
         itemView.setOnClickListener(v -> {
-
             if (itemClickListener == null)
                 return;
             int position = getAdapterPosition();

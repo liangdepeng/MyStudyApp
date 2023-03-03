@@ -8,4 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <ImageView
+        android:id="@+id/mv_image"
+        android:layout_width="match_parent"
+        android:transitionName="mv_transition"
+        android:layout_height="match_parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,7 +42,7 @@ public class RequestManager {
         client = new OkHttpClient.Builder()
                 .connectTimeout(10000, TimeUnit.MILLISECONDS)
                 .callTimeout(10000, TimeUnit.MILLISECONDS)
-                .sslSocketFactory(SSLSocketClient.getSSLSocketFactory(),SSLSocketClient.IGNORE_SSL_TRUST_MANAGER_X509)
+                .sslSocketFactory(SSLSocketClient.getSSLSocketFactory(), SSLSocketClient.IGNORE_SSL_TRUST_MANAGER_X509)
                 .hostnameVerifier(SSLSocketClient.getHostnameVerifier())
                 .build();
     }
@@ -65,14 +65,24 @@ public class RequestManager {
             url = UrlUtil.decode(url);
         }
 
-        Request.Builder builder = new Request.Builder()
-                .url(url);
+        Request.Builder builder = new Request.Builder();
 
         if (requestParams.getHttpMethod() == HttpMethod.GET) {
-            builder = builder.get();
+            if (!requestParams.getParamsMap().isEmpty()) {
+                StringBuilder urlBuild = new StringBuilder(url);
+                urlBuild.append("?");
+                for (Map.Entry<String, Object> entry : requestParams.getParamsMap().entrySet()) {
+                    urlBuild.append(entry.getKey())
+                            .append("=")
+                            .append(entry.getValue())
+                            .append("&");
+                }
+                url = urlBuild.substring(0, urlBuild.length() - 1);
+            }
+            builder = builder.url(url).get();
         } else if (requestParams.getHttpMethod() == HttpMethod.POST) {
             //  new FormBody.Builder().build();
-            builder = builder.post(RequestBody.create(requestParams.getParamsJson(), JSON));
+            builder = builder.url(url).post(RequestBody.create(requestParams.getParamsJson(), JSON));
         }//......
 
         // 公共请求头
@@ -101,6 +111,8 @@ public class RequestManager {
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (response.body() == null)
+                    return;
                 String responseStr = response.body().string();
                 handler.post(() -> {
                     if (callback == null)

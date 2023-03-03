@@ -5,6 +5,14 @@ import android.view.ViewGroup;
 
 import androidx.viewbinding.ViewBinding;
 
+/**
+ * 快速设置 RecyclerView Adapter
+ * 1、item布局基于Viewbinding
+ * 2、可设置点击事件，长按事件
+ *
+ * @param <T> item 数据Bean
+ * @param <VB> Viewbinding 布局
+ */
 public abstract class BaseQuickAdapter<T, VB extends ViewBinding> extends BaseRecyclerViewAdapter<T, BaseViewHolder<VB>> {
 
     private OnMyItemClickListener itemClickListener;

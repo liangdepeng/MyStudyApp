@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dpzz.lib_base.base.BaseFragment;
+import com.dpzz.lib_base.http.contans.Constants;
 import com.dpzz.lib_base.recyclerview.BaseRecyclerViewAdapter;
 import com.dpzz.lib_base.recyclerview.OnMyItemClickListener;
 import com.dpzz.lib_base.util.PxUtils;
 import com.dpzz.lib_base.util.ToastUtil;
-import com.dpzz.lib_video.VideoActivity;
 import com.dpzz.mvpart.R;
 import com.dpzz.mvpart.adapter.RecommendAdapter3;
 import com.dpzz.mvpart.adapter.RecommendBannerAdapter;
@@ -58,7 +58,10 @@ public class HomeRecommendFragment extends BaseFragment<FragmentHomeRecommandBin
         recommendMvAdapter.setItemClickListener(new OnMyItemClickListener() {
             @Override
             public void onItemClick(BaseRecyclerViewAdapter adapter, int position) {
-                startActivity(new Intent(mContext, VideoActivity.class));
+              //  startActivity(new Intent(mContext, VideoActivity.class));
+                int movieId = recommendMvAdapter.getItemData(position).movieId;
+                startActivity(new Intent(mContext, MvDetailActivity.class)
+                        .putExtra(Constants.MV_ID,movieId));
             }
         });
 

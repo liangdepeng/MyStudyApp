@@ -18,6 +18,11 @@
             android:name=".MvMainActivity"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".homepage.MvDetailActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false">
+        </activity>
         <activity android:name=".MvLauncherActivity"
             android:screenOrientation="portrait"
             android:exported="true">
