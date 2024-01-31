@@ -1,5 +1,7 @@
 package com.dpjh.developtools
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,6 +22,11 @@ class MainActivity : AppCompatActivity() {
             adapter = mAdapter
         }
 
+        binding.openVv.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://blog.csdn.net/Mr_Liangxiaobai/article/details/135952439"))
+            startActivity(intent)
+        }
+
         mAdapter.setData(getItemPages())
     }
 
@@ -34,7 +41,6 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         FloatWindowManager.getInstance().release()
-       // stopService(Intent(this,WatchService::class.java))
     }
 
     override fun onBackPressed() {

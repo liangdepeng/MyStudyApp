@@ -21,7 +21,7 @@ class WatchService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        Log.e(TAG,"onCreate")
+      //  Log.e(TAG,"onCreate")
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
@@ -30,24 +30,24 @@ class WatchService : Service() {
             taskkTimer?.scheduleAtFixedRate(MyTask(), 0L, 1000L)
             Log.e(TAG,"taskkTimer == null")
         }
-        Log.e(TAG,"onStartCommand")
+      //  Log.e(TAG,"onStartCommand")
         return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onTaskRemoved(rootIntent: Intent) {
         super.onTaskRemoved(rootIntent)
         stopSelf()
-        Log.e(TAG,"onTaskRemoved")
+      //  Log.e(TAG,"onTaskRemoved")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.e(TAG,"onDestroy")
+      //  Log.e(TAG,"onDestroy")
     }
 
     override fun onStart(intent: Intent?, startId: Int) {
         super.onStart(intent, startId)
-        Log.e(TAG,"onStart")
+      //  Log.e(TAG,"onStart")
     }
 
     override fun onBind(intent: Intent): IBinder? {
@@ -100,7 +100,7 @@ class WatchService : Service() {
                     PackageUtils.getAppName(this@WatchService,pkgName),pkgName
                     ,className,PackageUtils.getAppIcon(this@WatchService,pkgName))
 
-                Log.e(TAG, "ONRESUME $pkgName  $className  $time")
+             //   Log.e(TAG, "ONRESUME $pkgName  $className  $time")
             }
         }
     }
