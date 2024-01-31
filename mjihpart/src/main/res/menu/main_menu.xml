@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/switch_item"
+        android:icon="@mipmap/icon_switch"
+        app:showAsAction="always"
+        android:title="切换样式" />
+
+    <item
+        android:id="@+id/search_item"
+        android:icon="@mipmap/icon_search_"
+        app:showAsAction="always"
+        android:title="搜索" />
+
+</menu>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- 表示应用程序内部存储区域的files/子目录中的文件。此子目录与Context.getFilesDir()返回的值相同。-->
+    <files-path name="inner_app_file" path="." />
+
+    <!-- 表示应用程序内部存储区域的缓存子目录中的文件。此子目录的根路径与getCacheDir()返回的值相同。-->
+    <cache-path name="inner_app_cache" path="." />
+
+    <!-- 表示外部存储区根目录中的文件。此子目录的根路径与Environment.getExternalStorageDirectory()返回的值相同。-->
+    <external-path name="external_file" path="." />
+
+    <!-- 表示应用程序外部存储区域根目录中的文件。此子目录的根路径与Context#getExternalFilesDir(String) Context.getExternalFilesDir(null)返回的值相同。-->
+    <external-files-path name="external_app_file" path="." />
+
+    <!-- 表示应用程序外部缓存区域根目录中的文件。此子目录的根路径与Context.getExternalCacheDir()返回的值相同。-->
+    <external-cache-path name="external_app_cache" path="." />
+
+<!--    表示应用外部媒体区域根目录中的文件。此子目录的根路径与Context.getExternalMediaDirs()的第一个结果返回的值相同。-->
+<!--    注意：此目录仅适用于 API 21+ 设备。-->
+    <external-media-path name="external-media-app_cache" path="." />
+
+
+</paths>

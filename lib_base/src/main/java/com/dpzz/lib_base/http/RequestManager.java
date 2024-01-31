@@ -51,10 +51,10 @@ public class RequestManager {
         return Instance.requestManager;
     }
 
-    public void startRequest(RequestParams requestParams, HttpResponse callback) {
+    public <T> void startRequest(RequestParams requestParams, HttpResponse<T> callback) {
         if (requestParams == null)
             return;
-
+// Type parameter 'T' explicitly extends 'java.lang.Object'
         String url = requestParams.getRequestUrl();
 
         if (TextUtils.isEmpty(url)) {
@@ -111,13 +111,23 @@ public class RequestManager {
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if (callback == null)
+                    return;
                 if (response.body() == null)
                     return;
                 String responseStr = response.body().string();
                 handler.post(() -> {
-                    if (callback == null)
-                        return;
                     try {
+                        /**
+                         * 解析仅适用于 本项目指定结构
+                         * {
+                         *     “code":0,
+                         *     "message":"",
+                         *     "data":{
+                         *         xxx...
+                         *     }
+                         * }
+                         */
                         if (TextUtils.isEmpty(responseStr)) {
                             callback.onFailed(requestParams, new Exception("返回为空 null"));
                         } else {
@@ -127,9 +137,9 @@ public class RequestManager {
                             String msg = jsonObject.optString("msg", "未知错误");
                             if (code == 0 && obj != null && !TextUtils.isEmpty(obj.toString())) {
                                 if (requestParams.getParseClass() == null) {
-                                    callback.onSuccess(obj, requestParams);
+                                    callback.onSuccess((T) obj, requestParams);
                                 } else {
-                                    callback.onSuccess(new Gson().fromJson(obj.toString(), requestParams.getParseClass()), requestParams);
+                                    callback.onSuccess(((T) new Gson().fromJson(obj.toString(), requestParams.getParseClass())), requestParams);
                                 }
                             } else {
                                 callback.onFailed(requestParams, new Exception(msg));
@@ -143,4 +153,5 @@ public class RequestManager {
             }
         });
     }
+
 }

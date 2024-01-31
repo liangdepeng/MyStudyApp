@@ -1,10 +1,13 @@
 package com.dpzz.mvapp
 
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import com.dpjh.miji.jihuang.JiHMainActivity
 import com.dpzz.lib_base.base.BaseActivity
+import com.dpzz.lib_base.setonMyClickListener
 import com.dpzz.mvapp.databinding.ActivityMainBinding
+import com.dpzz.mvpart.MvLauncherActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -17,7 +20,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initView() {
-        mViewBinding.hello.text = "123321"
-        Toast.makeText(this, "kaiji", Toast.LENGTH_LONG).show()
+        mViewBinding.mvBtn.setonMyClickListener {
+            startActivity(Intent(this,MvLauncherActivity::class.java))
+        }
+        mViewBinding.jhBtn.setonMyClickListener {
+            startActivity(Intent(this,JiHMainActivity::class.java))
+        }
+    }
+
+    override fun onBackPressed() {
+        moveTaskToBack(false)
     }
 }

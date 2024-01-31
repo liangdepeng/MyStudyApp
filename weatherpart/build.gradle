@@ -1,0 +1,68 @@
+if (isOpenPlugin){
+    apply plugin: 'com.android.application'
+}else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'kotlin-android'
+
+def androidConfig = rootProject.ext.android
+
+android {
+    compileSdk androidConfig.compileSdk
+
+    defaultConfig {
+        if (isOpenPlugin){
+            applicationId "com.dpzz.weatherpart"
+        }
+        minSdk androidConfig.minSdk
+        targetSdk androidConfig.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi','arm64-v8a' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    viewBinding {
+        enabled = true
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation project(path: ':lib_base')
+
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+ //   implementation "androidx.core:core-ktx:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+//repositories {
+//    mavenCentral()
+//}

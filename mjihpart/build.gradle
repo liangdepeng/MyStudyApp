@@ -1,0 +1,60 @@
+if (isOpenPlugin){
+    apply plugin: 'com.android.application'
+}else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'kotlin-android'
+
+def androidConfig = rootProject.ext.android
+
+android {
+
+    signingConfigs {
+        release {
+            storeFile file('../jihmj.jks')
+            storePassword 'ldp12345'
+            keyAlias 'key99'
+            keyPassword 'ldp12345'
+        }
+    }
+
+    compileSdk androidConfig.compileSdk
+    defaultConfig {
+        if (isOpenPlugin){
+            applicationId "com.dpjh.mjihpart"
+        }
+        minSdk androidConfig.minSdk
+        targetSdk androidConfig.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation project(path: ':lib_base')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.core:core-ktx:1.3.2'
+
+}

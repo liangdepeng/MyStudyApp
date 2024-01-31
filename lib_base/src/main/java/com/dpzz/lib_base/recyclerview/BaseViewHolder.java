@@ -13,7 +13,7 @@ public class BaseViewHolder<VB extends ViewBinding> extends RecyclerView.ViewHol
         mViewBinding = viewBinding;
     }
 
-    public final void bindViewClickListener(final BaseRecyclerViewAdapter adapter, OnMyItemClickListener itemClickListener) {
+    public final void bindViewClickListener(final BaseQuickAdapter adapter, OnMyItemClickListener itemClickListener) {
         itemView.setOnClickListener(v -> {
             if (itemClickListener == null)
                 return;
@@ -25,7 +25,7 @@ public class BaseViewHolder<VB extends ViewBinding> extends RecyclerView.ViewHol
         });
     }
 
-    public final void bindViewLongClickListener(final BaseRecyclerViewAdapter adapter, OnMyItemLongClickListener itemClickListener) {
+    public final void bindViewLongClickListener(final BaseQuickAdapter adapter, OnMyItemLongClickListener itemClickListener) {
         itemView.setOnLongClickListener(v -> {
             if (itemClickListener == null)
                 return false;

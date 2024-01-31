@@ -5,7 +5,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import com.google.gson.Gson
-import com.hjq.toast.ToastUtils
+import com.hjq.toast.Toaster
 import org.json.JSONObject
 
 /**
@@ -35,7 +35,7 @@ fun <T : View> T.setonMyClickListener(delayMills: Long = 500L, block: (T) -> Uni
 // 安全弹出 Toast
 fun Any?.simpleToast() {
     if (this == null) return
-    ToastUtils.show(this.toString())
+    Toaster.show(this.toString())
 }
 
 // 处理接口返回的数据 外部拦截异常
@@ -50,7 +50,7 @@ fun dealResponse(
     onSuccess: (jsonObject: JSONObject, message: String) -> Unit,
     onError: () -> Unit = {
         if (!isSilentRequest)
-            ToastUtils.show("请求失败")
+            Toaster.show("请求失败")
     },
     isSilentRequest: Boolean = false
 ) {
@@ -62,11 +62,11 @@ fun dealResponse(
                 onSuccess.invoke(jsonObject, message)
             } else {
                 if (!isSilentRequest)
-                    ToastUtils.show(message)
+                    Toaster.show(message)
             }
         }) {
             if (!isSilentRequest)
-                ToastUtils.show("请求数据异常")
+                Toaster.show("请求数据异常")
         }
     } else {
         onError.invoke()

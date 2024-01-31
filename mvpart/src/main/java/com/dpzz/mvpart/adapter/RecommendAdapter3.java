@@ -4,9 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.dpzz.lib_base.imageload.ImageLoader;
 import com.dpzz.lib_base.recyclerview.BaseQuickAdapter;
 import com.dpzz.lib_base.recyclerview.BaseViewHolder;
 import com.dpzz.lib_base.util.PxUtils;
@@ -44,10 +42,12 @@ public class RecommendAdapter3 extends BaseQuickAdapter<RecommendMvBean.MoviesDa
     @Override
     protected void onBindMyViewHolder(BaseViewHolder<ItemRecommendMvBinding> holder, RecommendMvBean.MoviesDataBean item, int position) {
         holder.mViewBinding.mvNameTv.setText(item.movieCn);
-        Glide.with(mContext)
-                .load(item.imgUrl)
-                .transform(new CenterCrop(), new RoundedCorners(20))
-                .error(R.drawable.ic_launcher_background)
-                .into(holder.mViewBinding.imageV1);
+//        Glide.with(mContext)
+//                .load(item.imgUrl)
+//                .transform(new CenterCrop(), new RoundedCorners(20))
+//                .error(R.drawable.ic_launcher_background)
+//                .into(holder.mViewBinding.imageV1);
+        ImageLoader.getInstance().loadImageWithCorner(mContext,holder.mViewBinding.imageV1,item.imgUrl,
+                20,R.drawable.ic_launcher_background);
     }
 }

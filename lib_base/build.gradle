@@ -47,15 +47,20 @@ dependencies {
     //  implementation "androidx.core:core-ktx:+"
     //   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    api 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    api 'com.github.liangdepeng:CatchCrashLib:v1.1'
+
     // glide 图片加载
     api 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
     // 不用再手写xml shape selector 等
     api 'com.github.JavaNoober.BackgroundLibrary:libraryx:1.7.5'
     // 网络请求okhttp
-    api 'com.squareup.okhttp3:okhttp:4.10.0'
+   // api 'com.squareup.okhttp3:okhttp:4.10.0'
+    api projectDependencies.okhttp3
     // 安全弹出 toast
-    api 'com.github.getActivity:ToastUtils:11.2'
+    api 'com.github.getActivity:Toaster:12.3'
     // json 数据解析
     api 'com.google.code.gson:gson:2.10.1'
     // banner 框架
@@ -75,9 +80,22 @@ dependencies {
     def lifecycle_version = "2.5.1"
     def arch_version = "2.1.0"
     // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
-    // LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+//    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+//    // LiveData
+//    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+
+
+    // 协程核心库
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3"
+    // 协程Android支持库
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
+    // 协程Java8支持库
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.4.3"
+
+    // lifecycle对于协程的扩展封装
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0"
 }
 //repositories {
 //    mavenCentral()

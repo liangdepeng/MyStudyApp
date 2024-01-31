@@ -2,9 +2,12 @@ package com.dpzz.mvpart.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class MvDetailBean {
+public class MvDetailBean implements Serializable {
+
+    private static final long serialVersionUID = 4322403255959105728L;
 
     @SerializedName("basic")
     public BasicDataBean basic;
@@ -27,7 +30,7 @@ public class MvDetailBean {
 
     public static class BasicDataBean {
         @SerializedName("movieId")
-        public Integer movieId;
+        public int movieId;
         @SerializedName("name")
         public String name;
         @SerializedName("nameEn")
@@ -35,7 +38,7 @@ public class MvDetailBean {
         @SerializedName("overallRating")
         public Double overallRating;
         @SerializedName("isEReleased")
-        public Integer isEReleased;
+        public int isEReleased;
         @SerializedName("movieSubItemRatings")
         public List<MovieSubItemRatingsDataBean> movieSubItemRatings;
         @SerializedName("ratingCountRatios")
@@ -53,7 +56,7 @@ public class MvDetailBean {
         @SerializedName("sensitiveStatus")
         public Boolean sensitiveStatus;
         @SerializedName("movieStatus")
-        public Integer movieStatus;
+        public int movieStatus;
         @SerializedName("video")
         public VideoDataBean video;
         @SerializedName("type")
@@ -67,21 +70,21 @@ public class MvDetailBean {
         @SerializedName("commentSpecial")
         public Object commentSpecial;
         @SerializedName("hotRanking")
-        public Integer hotRanking;
+        public int hotRanking;
         @SerializedName("director")
         public DirectorDataBean director;
         @SerializedName("actors")
         public List<ActorsDataBean> actors;
         @SerializedName("personCount")
-        public Integer personCount;
+        public int personCount;
         @SerializedName("isTicket")
         public Boolean isTicket;
         @SerializedName("showCinemaCount")
-        public Integer showCinemaCount;
+        public int showCinemaCount;
         @SerializedName("showtimeCount")
-        public Integer showtimeCount;
+        public int showtimeCount;
         @SerializedName("showDay")
-        public Integer showDay;
+        public int showDay;
         @SerializedName("style")
         public Object style;
         @SerializedName("is3D")
@@ -109,21 +112,21 @@ public class MvDetailBean {
         @SerializedName("quizGame")
         public Object quizGame;
         @SerializedName("ratingCount")
-        public Integer ratingCount;
+        public int ratingCount;
         @SerializedName("ratingCountShow")
         public String ratingCountShow;
         @SerializedName("subItemRatingCount")
-        public Integer subItemRatingCount;
+        public int subItemRatingCount;
         @SerializedName("subItemRatingCountShow")
         public String subItemRatingCountShow;
         @SerializedName("attitude")
-        public Integer attitude;
+        public int attitude;
         @SerializedName("wantToSeeCount")
-        public Integer wantToSeeCount;
+        public int wantToSeeCount;
         @SerializedName("wantToSeeCountShow")
         public String wantToSeeCountShow;
         @SerializedName("hasSeenCount")
-        public Integer hasSeenCount;
+        public int hasSeenCount;
         @SerializedName("hasSeenCountShow")
         public String hasSeenCountShow;
         @SerializedName("wantToSeeNumberShow")
@@ -131,9 +134,9 @@ public class MvDetailBean {
         @SerializedName("userComment")
         public Object userComment;
         @SerializedName("userCommentId")
-        public Integer userCommentId;
+        public int userCommentId;
         @SerializedName("userRating")
-        public Integer userRating;
+        public int userRating;
         @SerializedName("userMovieSubItemRatings")
         public Object userMovieSubItemRatings;
         @SerializedName("userImg")
@@ -141,7 +144,7 @@ public class MvDetailBean {
         @SerializedName("userName")
         public Object userName;
         @SerializedName("isFavorite")
-        public Integer isFavorite;
+        public int isFavorite;
         @SerializedName("year")
         public String year;
         @SerializedName("summary")
@@ -151,17 +154,17 @@ public class MvDetailBean {
         @SerializedName("broadcastDes")
         public String broadcastDes;
         @SerializedName("videoCount")
-        public Integer videoCount;
+        public int videoCount;
         @SerializedName("imageCount")
-        public Integer imageCount;
+        public int imageCount;
         @SerializedName("commentCount")
-        public Integer commentCount;
+        public int commentCount;
         @SerializedName("longCommentCount")
-        public Integer longCommentCount;
+        public int longCommentCount;
         @SerializedName("shortCommentCount")
-        public Integer shortCommentCount;
+        public int shortCommentCount;
         @SerializedName("newsCount")
-        public Integer newsCount;
+        public int newsCount;
         @SerializedName("writers")
         public List<WritersDataBean> writers;
         @SerializedName("directors")
@@ -185,9 +188,9 @@ public class MvDetailBean {
         @SerializedName("relatedMovies")
         public Object relatedMovies;
         @SerializedName("currentUserId")
-        public Integer currentUserId;
+        public int currentUserId;
         @SerializedName("lowestTicketPrice")
-        public Integer lowestTicketPrice;
+        public int lowestTicketPrice;
         @SerializedName("countries")
         public List<CountriesDataBean> countries;
         @SerializedName("movieGenres")
@@ -197,18 +200,18 @@ public class MvDetailBean {
         @SerializedName("rankName")
         public Object rankName;
         @SerializedName("movieType")
-        public Integer movieType;
+        public int movieType;
         @SerializedName("favoriteCount")
-        public Integer favoriteCount;
+        public int favoriteCount;
     }
 
     public static class VideoDataBean {
         @SerializedName("url")
         public String url;
         @SerializedName("videoId")
-        public Integer videoId;
+        public int videoId;
         @SerializedName("videoSourceType")
-        public Integer videoSourceType;
+        public int videoSourceType;
         @SerializedName("title")
         public String title;
         @SerializedName("hightUrl")
@@ -216,14 +219,14 @@ public class MvDetailBean {
         @SerializedName("img")
         public String img;
         @SerializedName("count")
-        public Integer count;
+        public int count;
         @SerializedName("length")
-        public Integer length;
+        public int length;
     }
 
     public static class DirectorDataBean {
         @SerializedName("directorId")
-        public Integer directorId;
+        public int directorId;
         @SerializedName("name")
         public String name;
         @SerializedName("nameEn")
@@ -234,16 +237,16 @@ public class MvDetailBean {
 
     public static class AwardDataBean {
         @SerializedName("totalWinAward")
-        public Integer totalWinAward;
+        public int totalWinAward;
         @SerializedName("totalNominateAward")
-        public Integer totalNominateAward;
+        public int totalNominateAward;
         @SerializedName("awardList")
         public List<?> awardList;
     }
 
     public static class StageImgDataBean {
         @SerializedName("count")
-        public Integer count;
+        public int count;
         @SerializedName("list")
         public List<ListDataBean> list;
     }
@@ -251,14 +254,14 @@ public class MvDetailBean {
 
     public static class ListDataBean {
         @SerializedName("imgId")
-        public Integer imgId;
+        public int imgId;
         @SerializedName("imgUrl")
         public String imgUrl;
     }
 
     public static class MovieSubItemRatingsDataBean {
         @SerializedName("index")
-        public Integer index;
+        public int index;
         @SerializedName("title")
         public String title;
         @SerializedName("rating")
@@ -274,7 +277,7 @@ public class MvDetailBean {
 
     public static class ActorsDataBean {
         @SerializedName("actorId")
-        public Integer actorId;
+        public int actorId;
         @SerializedName("name")
         public String name;
         @SerializedName("nameEn")
@@ -289,7 +292,7 @@ public class MvDetailBean {
 
     public static class WritersDataBean {
         @SerializedName("id")
-        public Integer id;
+        public int id;
         @SerializedName("name")
         public String name;
         @SerializedName("nameEn")
@@ -298,7 +301,7 @@ public class MvDetailBean {
 
     public static class DirectorsDataBean {
         @SerializedName("directorId")
-        public Integer directorId;
+        public int directorId;
         @SerializedName("name")
         public String name;
         @SerializedName("nameEn")
@@ -309,7 +312,7 @@ public class MvDetailBean {
 
     public static class CompaniesDataBean {
         @SerializedName("id")
-        public Integer id;
+        public int id;
         @SerializedName("name")
         public Object name;
         @SerializedName("nameEn")
@@ -318,7 +321,7 @@ public class MvDetailBean {
 
     public static class ProductionCompaniesDataBean {
         @SerializedName("id")
-        public Integer id;
+        public int id;
         @SerializedName("name")
         public Object name;
         @SerializedName("nameEn")
@@ -327,7 +330,7 @@ public class MvDetailBean {
 
     public static class PresentCompaniesDataBean {
         @SerializedName("id")
-        public Integer id;
+        public int id;
         @SerializedName("name")
         public String name;
         @SerializedName("nameEn")
@@ -336,7 +339,7 @@ public class MvDetailBean {
 
     public static class UnionPresentCompaniesDataBean {
         @SerializedName("id")
-        public Integer id;
+        public int id;
         @SerializedName("name")
         public String name;
         @SerializedName("nameEn")
@@ -347,9 +350,9 @@ public class MvDetailBean {
         @SerializedName("url")
         public String url;
         @SerializedName("videoId")
-        public Integer videoId;
+        public int videoId;
         @SerializedName("videoSourceType")
-        public Integer videoSourceType;
+        public int videoSourceType;
         @SerializedName("title")
         public String title;
         @SerializedName("hightUrl")
@@ -357,14 +360,14 @@ public class MvDetailBean {
         @SerializedName("img")
         public String img;
         @SerializedName("count")
-        public Integer count;
+        public int count;
         @SerializedName("length")
-        public Integer length;
+        public int length;
     }
 
     public static class CountriesDataBean {
         @SerializedName("id")
-        public Integer id;
+        public int id;
         @SerializedName("name")
         public String name;
         @SerializedName("nameEn")
@@ -373,7 +376,7 @@ public class MvDetailBean {
 
     public static class MovieGenresDataBean {
         @SerializedName("id")
-        public Integer id;
+        public int id;
         @SerializedName("name")
         public String name;
         @SerializedName("nameEn")
@@ -382,7 +385,7 @@ public class MvDetailBean {
 
     public static class AdvertisementDataBean {
         @SerializedName("count")
-        public Integer count;
+        public int count;
         @SerializedName("success")
         public Boolean success;
         @SerializedName("error")
@@ -393,7 +396,7 @@ public class MvDetailBean {
 
     public static class BehindInfoDataBean {
         @SerializedName("eventCount")
-        public Integer eventCount;
+        public int eventCount;
         @SerializedName("title")
         public String title;
         @SerializedName("list")
@@ -402,7 +405,7 @@ public class MvDetailBean {
 
     public static class NewsDataBean {
         @SerializedName("newsId")
-        public Integer newsId;
+        public int newsId;
         @SerializedName("image")
         public String image;
         @SerializedName("title")

@@ -7,11 +7,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.dpzz.lib_base.imageload.ImageLoader;
 import com.dpzz.lib_base.util.PxUtils;
-import com.dpzz.mvpart.R;
 import com.dpzz.mvpart.bean.RecommendBannerBean;
 import com.youth.banner.adapter.BannerAdapter;
 
@@ -33,17 +30,18 @@ public class RecommendBannerAdapter extends BannerAdapter<RecommendBannerBean.It
         params.leftMargin = PxUtils.dip2px(mContext,12);
         params.rightMargin = PxUtils.dip2px(mContext,12);
         imageView.setLayoutParams(params);
-        //imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         return new ViewHolder(imageView);
     }
 
     @Override
     public void onBindView(ViewHolder holder, RecommendBannerBean.ItemsDataBean data, int position, int size) {
-        Glide.with(mContext)
-                .load(data.imgApp)
-                .transform(new CenterCrop(),new RoundedCorners(20))
-                .error(R.drawable.ic_launcher_background)
-                .into(holder.imageView);
+//        Glide.with(mContext)
+//                .load(data.imgApp)
+//                .transform(new CenterCrop(),new RoundedCorners(20))
+//                .error(R.drawable.ic_launcher_background)
+//                .into(holder.imageView);
+        ImageLoader.getInstance().loadImageWithCorner(mContext, holder.imageView, data.imgApp,20);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

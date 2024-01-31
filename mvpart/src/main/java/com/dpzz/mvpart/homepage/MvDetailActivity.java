@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.dpzz.lib_base.base.BaseActivity;
 import com.dpzz.lib_base.http.contans.Constants;
+import com.dpzz.lib_base.util.ToastUtil;
 import com.dpzz.lib_video.VideoActivity;
 import com.dpzz.mvpart.R;
 import com.dpzz.mvpart.bean.MvDetailBean;
@@ -46,6 +47,19 @@ public class MvDetailActivity extends BaseActivity<ActivityMovieDetailBinding> {
         // mViewBinding.videoView.post(() -> videoViewWidth = mViewBinding.videoView.getWidth());
 
 
+        // todo test crash
+
+
+        mViewBinding.videoView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                String sstr = "123&0";
+                int value = Integer.parseInt(sstr);
+                ToastUtil.show(sstr+value);
+            }
+        },3000);
+
+        // todo test crash
 
 
         mViewBinding.mainImageIv.setOnClickListener(new View.OnClickListener() {

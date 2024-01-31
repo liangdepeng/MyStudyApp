@@ -13,8 +13,6 @@ import com.dpzz.mvpart.databinding.ActivityMvSplashBinding;
 
 public class MvLauncherActivity extends BaseActivity<ActivityMvSplashBinding> {
 
-    private final String countdownTag = "splash_countdown";
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +21,10 @@ public class MvLauncherActivity extends BaseActivity<ActivityMvSplashBinding> {
 
     @Override
     public void initData() {
-        CountdownUtil.start(95, new CountdownUtil.CallbackAdapter() {
+        CountdownUtil.start(88, new CountdownUtil.CallbackAdapter() {
             @Override
             public void onValueUpdate(int value) {
-                mViewBinding.helloTxt.setText(value + " 秒后进入主页");
+                mViewBinding.helloTxt.setText(String.format("%d 秒后进入主页", value));
             }
 
             @Override
@@ -34,16 +32,18 @@ public class MvLauncherActivity extends BaseActivity<ActivityMvSplashBinding> {
                 startActivity(new Intent(MvLauncherActivity.this, MvMainActivity.class));
                 finish();
             }
-        }, countdownTag);
+        }, CountdownUtil.countdownTag1);
+
+      //  AppUpdateManager.Companion.checkAppUpdate(this);
     }
+
 
     @Override
     public void initView() {
         mViewBinding.jumpBtn.setOnClickListener(v -> {
-            CountdownUtil.cancelIfCountdownIsRunning(countdownTag);
+            CountdownUtil.cancelIfCountdownIsRunning(CountdownUtil.countdownTag1);
             startActivity(new Intent(MvLauncherActivity.this, MvMainActivity.class));
             finish();
         });
-
     }
 }

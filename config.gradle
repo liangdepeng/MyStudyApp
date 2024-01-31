@@ -1,0 +1,18 @@
+ext {
+    // 插件化
+    isOpenPlugin = true
+
+    android = [
+            versionCode: 1,
+            versionName: "1.0",
+            minSdk     : 22,
+            targetSdk  : 32,
+            compileSdk : 32
+    ]
+
+    projectDependencies = [
+            okhttp3  : 'com.squareup.okhttp3:okhttp:4.10.0',
+            toastUtil: 'com.github.getActivity:ToastUtils:11.2'
+    ]
+
+}

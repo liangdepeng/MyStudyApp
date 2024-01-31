@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="12dp"
+    android:layout_marginBottom="10dp">
+
+    <TextView
+        android:id="@+id/city_tv"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:bl_corners_radius="10dp"
+        app:bl_pressed_solid_color="#80ffffff"
+        app:bl_pressed_stroke_color="#80000000"
+        app:bl_pressed_textColor="#80000000"
+        app:bl_stroke_width="1dp"
+        app:bl_unPressed_solid_color="#ffffff"
+        app:bl_unPressed_stroke_color="#000000"
+        app:bl_unPressed_textColor="#000000" />
+
+</FrameLayout>

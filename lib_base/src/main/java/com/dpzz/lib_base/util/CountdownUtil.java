@@ -9,6 +9,8 @@ import java.util.HashMap;
 
 public class CountdownUtil {
 
+    public final static String countdownTag1 = "splash_countdown";
+
     private static final HashMap<String, Animator> animatorHashMap = new HashMap<>(2);
 
     public static void start(int seconds, Callback callback, String tag) {

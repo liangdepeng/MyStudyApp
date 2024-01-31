@@ -13,15 +13,17 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseFragment<VB :ViewBinding> : Fragment() {
 
     protected lateinit var mViewBinding :VB
-    protected lateinit var mContext :Activity
+    protected lateinit var mContext :Context
+    protected lateinit var mActivity :Activity
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        mContext = context
     }
 
     override fun onAttach(activity: Activity) {
         super.onAttach(activity)
-        mContext = activity
+        mActivity = activity
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

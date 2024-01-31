@@ -20,12 +20,22 @@ public class MvDetailVm extends ViewModel {
         requestParams.putParam("movieId", mvId)
                 .putParam("locationId", Constants.LOCATION_ID)
                 .setParseClass(MvDetailBean.class);
-        RequestManager.getInstance().startRequest(requestParams, new HttpResponse() {
+        RequestManager.getInstance().startRequest(requestParams, new HttpResponse<MvDetailBean>() {
+//            @Override
+//            public void onSuccess(Object data, RequestParams requestParams) {
+//                if (data instanceof MvDetailBean){
+//                    MvDetailBean detailBean = (MvDetailBean) data;
+//                    detailData.setValue(detailBean);
+//                }else {
+//                    onFailed(requestParams,new Exception("解析失败或者为null"));
+//                }
+//            }
+
             @Override
-            public void onSuccess(Object data, RequestParams requestParams) {
-                if (data instanceof MvDetailBean){
-                    MvDetailBean detailBean = (MvDetailBean) data;
-                    detailData.setValue(detailBean);
+            public void onSuccess(MvDetailBean data, RequestParams requestParams) {
+                if (data !=null){
+                   // MvDetailBean detailBean = (MvDetailBean) data;
+                    detailData.setValue(data);
                 }else {
                     onFailed(requestParams,new Exception("解析失败或者为null"));
                 }
