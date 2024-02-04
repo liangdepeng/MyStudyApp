@@ -87,7 +87,6 @@ class WatchService : Service() {
                     }
                 }
             }
-//
             if (pkgName.isNotEmpty()) {
 
                 LocalBroadcastManager.getInstance(this@WatchService)

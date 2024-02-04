@@ -8,11 +8,14 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Process
 import android.provider.Settings
+import android.text.SpannableString
+import android.text.Spanned
 import android.text.TextUtils
+import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dpjh.developtools.Constants
@@ -21,13 +24,15 @@ import com.dpjh.developtools.databinding.ActivityToolsPageBinding
 import java.util.*
 
 
-class ActivityToolsPage : AppCompatActivity() {
+class ActivityToolsPage : BaseActivity() {
 
     private val TAG = "ActivityToolsPage6666"
 
     private val binding by lazy { ActivityToolsPageBinding.inflate(layoutInflater) }
 
     private val mAdapter by lazy { ActivityInfoAdapter(this) }
+
+    private val handler by lazy { Handler(Looper.getMainLooper()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,9 +75,9 @@ class ActivityToolsPage : AppCompatActivity() {
         binding.switchFloatingWindow.setOnCheckedChangeListener(object :
             CompoundButton.OnCheckedChangeListener {
             override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
-                if (isChecked){
+                if (isChecked) {
                     FloatWindowManager.getInstance().showWindow()
-                }else{
+                } else {
                     FloatWindowManager.getInstance().hideWindow()
                 }
             }
@@ -88,12 +93,12 @@ class ActivityToolsPage : AppCompatActivity() {
                 binding.switchPlaceholder.visibility = View.GONE
                 binding.switchFloatingWindow.isChecked = true
             } else {
-               showFloatWindowPermissionDialog()
+                showFloatWindowPermissionDialog()
             }
         }
         if (FloatWindowManager.getInstance().isHasPermission) {
             binding.switchPlaceholder.visibility = View.GONE
-            if (FloatWindowManager.getInstance().isShow){
+            if (FloatWindowManager.getInstance().isShow) {
                 binding.switchFloatingWindow.isChecked = true
             }
         } else {
@@ -111,10 +116,14 @@ class ActivityToolsPage : AppCompatActivity() {
     }
 
     private fun showFloatWindowPermissionDialog() {
+        val msg = "《${getString(R.string.app_name)}》-使用悬浮窗需要手动授予权限，请务必授予权限，否则无法正常使用"
+        val spannableString = SpannableString(msg)
+        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(this,R.color.purple_500)),0,8,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
         AlertDialog.Builder(this)
             .setCancelable(false)
             .setTitle("提示")
-            .setMessage("使用悬浮窗需要手动授予权限，请务必授予权限，否则无法正常使用")
+            .setMessage(spannableString)
             .setNegativeButton("点击跳转", object : DialogInterface.OnClickListener {
                 override fun onClick(dialog: DialogInterface?, which: Int) {
                     FloatWindowManager.getInstance().requestPermission(this@ActivityToolsPage)
@@ -147,10 +156,14 @@ class ActivityToolsPage : AppCompatActivity() {
     }
 
     private fun showRequestAppUsageDialog() {
+        val msg = "《${getString(R.string.app_name)}》-查看当前Activity-需要授权\"查看应用使用记录访问权限\",点击确定去手动授权"
+        val spannableString = SpannableString(msg)
+        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(this,R.color.purple_500)),0,8,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
         AlertDialog.Builder(this)
             .setCancelable(false)
             .setTitle("提示")
-            .setMessage("${getString(R.string.app_name)}-查看当前Activity-需要授权\"查看应用使用记录访问权限\",点击确定去手动授权")
+            .setMessage(spannableString)
             .setNegativeButton("确定", object : DialogInterface.OnClickListener {
                 override fun onClick(dialog: DialogInterface?, which: Int) {
                     requestUsageAccess(this@ActivityToolsPage)
@@ -183,10 +196,20 @@ class ActivityToolsPage : AppCompatActivity() {
             if (isUsageAccessGranted(this)) {
                 Toast.makeText(this, "已成功 获得 应用使用记录访问权限", Toast.LENGTH_LONG).show()
                 startRecord()
+            } else {
+                Toast.makeText(this, "未检测到 应用使用记录访问权限，访问失败\n请退出重试", Toast.LENGTH_LONG).show()
             }
-        }else if (requestCode == FloatWindowManager.OVERLAY_PERMISSION_REQUEST_CODE){
-            if (FloatWindowManager.getInstance().isHasPermission){
+        } else if (requestCode == FloatWindowManager.OVERLAY_PERMISSION_REQUEST_CODE) {
+            if (FloatWindowManager.getInstance().isHasPermission) {
                 Toast.makeText(this, "已成功 获得 悬浮窗权限", Toast.LENGTH_LONG).show()
+                handler.postDelayed({
+                    binding.switchFloatingWindow.isChecked = true
+                    if (!isUsageAccessGranted(this)){
+                        Toast.makeText(this, "未检测到 应用使用记录访问权限，访问失败\n请退出重试", Toast.LENGTH_LONG).show()
+                    }
+                }, 1000)
+            } else {
+                Toast.makeText(this, "悬浮窗权限 未授权", Toast.LENGTH_LONG).show()
             }
         }
     }

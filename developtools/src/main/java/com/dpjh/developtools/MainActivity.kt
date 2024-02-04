@@ -5,10 +5,11 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.dpjh.developtools.activitytools.BaseActivity
 import com.dpjh.developtools.activitytools.FloatWindowManager
 import com.dpjh.developtools.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val mAdapter by lazy { ToolsRvAdapter(this) }

@@ -1,6 +1,7 @@
 package com.dpjh.developtools.activitytools;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
@@ -67,7 +68,7 @@ public class FloatWindowManager {
         return Looper.getMainLooper() != Looper.myLooper();
     }
 
-    public boolean isShow(){
+    public boolean isShow() {
         return isAdd;
     }
 
@@ -108,6 +109,18 @@ public class FloatWindowManager {
         appNameTv = contentView.findViewById(R.id.app_name_tv);
         pkgNameTv = contentView.findViewById(R.id.pkg_name_tv);
         activityNameTv = contentView.findViewById(R.id.activity_name_tv);
+
+        contentView.findViewById(R.id.backapp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    ActivityManager activityManager = (ActivityManager) BaseApp.applicationContext.getSystemService(Context.ACTIVITY_SERVICE);
+                    activityManager.moveTaskToFront(BaseActivity.getTopActivity().getTaskId(),ActivityManager.MOVE_TASK_WITH_HOME);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
 
         appIconIv.setImageResource(R.mipmap.ic_launcher);
         appNameTv.setText(appContext.getString(R.string.app_name));

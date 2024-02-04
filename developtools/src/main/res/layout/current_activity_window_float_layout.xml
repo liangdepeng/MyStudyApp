@@ -29,6 +29,30 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="develop" />
 
+    <View
+        android:id="@+id/space"
+        app:layout_constraintLeft_toRightOf="@+id/app_name_tv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/backapp"
+        android:layout_width="0dp"
+        android:layout_height="1dp"/>
+
+    <Button
+        android:id="@+id/backapp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/space"
+        android:layout_marginLeft="10dp"
+        android:includeFontPadding="false"
+        android:scaleX="0.55"
+        android:scaleY="0.55"
+        android:translationX="20dp"
+        android:text="点击返回app"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/app_name_tv"
+        app:layout_constraintRight_toRightOf="parent" />
+
     <TextView
         android:id="@+id/pkg_name_tv"
         android:layout_width="wrap_content"
