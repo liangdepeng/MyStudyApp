@@ -4,12 +4,13 @@ import android.app.Application;
 import android.content.Context;
 
 import com.dpzz.lib_base.util.SPUtil;
+import com.dpzz.lib_base.util.ToastUtil;
 import com.qweather.sdk.view.HeConfig;
 import com.tencent.bugly.crashreport.CrashReport;
 
 public class WeatherApp extends Application {
 
-    private static Context applicationContext;
+    public static Context applicationContext;
     public static boolean isCanInitSdk = false;
     private static boolean isInitSdkFinished = false;
     private static boolean isInitingSdk = false;
@@ -28,6 +29,7 @@ public class WeatherApp extends Application {
             isInitingSdk = true;
             initBugly();
             initHef();
+            ToastUtil.init(applicationContext);
             isInitingSdk = false;
             isInitSdkFinished = true;
         }

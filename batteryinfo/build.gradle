@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 28
 
     defaultConfig {
         applicationId "com.dpjh.batteryinfo"
         minSdk 22
-        targetSdk 32
+        targetSdk 28
         versionCode 1
         versionName "1.0"
 

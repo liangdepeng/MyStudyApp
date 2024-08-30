@@ -7,6 +7,10 @@ dependencyResolutionManagement {
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
         maven { url 'https://jitpack.io' }
+        maven {
+            allowInsecureProtocol = true
+            url "http://maven.rongcloud.cn/repository/maven-releases/"
+        }
 
         google()
         mavenCentral()
@@ -23,3 +27,4 @@ include ':lib_utils'
 include ':mjihpart'
 include ':batteryinfo'
 include ':developtools'
+include ':imapplication'

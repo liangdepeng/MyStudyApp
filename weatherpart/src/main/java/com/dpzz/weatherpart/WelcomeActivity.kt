@@ -35,6 +35,7 @@ class WelcomeActivity : BaseActivity<ActivitySplashBinding>() {
         } else {
             handler.postDelayed({
                 JumpUtils.into(this, ChooseCityActivity::class.java)
+                finish()
             }, 1000)
         }
     }
@@ -52,6 +53,7 @@ class WelcomeActivity : BaseActivity<ActivitySplashBinding>() {
             WeatherApp.isCanInitSdk = true
             WeatherApp.initSdk()
             JumpUtils.into(this, ChooseCityActivity::class.java)
+            finish()
         }
 
         return AlertDialog.Builder(this, R.style.standard_dialog_style1)

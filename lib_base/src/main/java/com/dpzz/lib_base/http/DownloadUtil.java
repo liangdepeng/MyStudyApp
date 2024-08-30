@@ -17,7 +17,7 @@ public class DownloadUtil {
     private static DownloadUtil downloadUtil;
     private final OkHttpClient okHttpClient;
 
-    public static DownloadUtil get() {
+    public synchronized static DownloadUtil get() {
         if (downloadUtil == null) {
             downloadUtil = new DownloadUtil();
         }

@@ -4,15 +4,19 @@ import com.dpjh.developtools.activitytools.ActivityToolsPage;
 
 public enum ToolsClassEnum {
 
-    ACTIVITY_GET_CURRENT_PAGE_NAME("当前Activity", R.mipmap.ic_launcher, ActivityToolsPage.class);
+    ACTIVITY_GET_CURRENT_PAGE_NAME("当前Activity", R.mipmap.ic_launcher,"", ActivityToolsPage.class),
+
+    ACTIVITY_GET_LAYOUT_QUERY("布局边界查看", R.mipmap.ic_launcher,Constants.CODE_LAYOUT_QUERY, null);
 
     private String title;
     private Object icon;
+    private String functionCode;
     private Class<?> activityClass;
 
-    ToolsClassEnum(String title, Object icon, Class<?> activityClass) {
+    ToolsClassEnum(String title, Object icon, String functionCode, Class<?> activityClass) {
         this.title = title;
         this.icon = icon;
+        this.functionCode = functionCode;
         this.activityClass = activityClass;
     }
 
@@ -30,6 +34,14 @@ public enum ToolsClassEnum {
 
     public void setIcon(Object icon) {
         this.icon = icon;
+    }
+
+    public String getFunctionCode() {
+        return functionCode;
+    }
+
+    public void setFunctionCode(String functionCode) {
+        this.functionCode = functionCode;
     }
 
     public Class<?> getActivityClass() {

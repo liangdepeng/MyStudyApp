@@ -1,19 +1,31 @@
 package com.dpjh.batteryinfo;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import java.util.List;
 
 public class BatteryMainActivity extends AppCompatActivity {
 
     private TextView batteryTv;
+    private Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +33,37 @@ public class BatteryMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_battery_main);
         batteryTv = findViewById(R.id.battery_tv);
         registerBatteryReceiver();
+
+        handler.postDelayed(new Runnable() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void run() {
+
+                int code = ActivityCompat.checkSelfPermission(BatteryMainActivity.this, Manifest.permission.QUERY_ALL_PACKAGES);
+
+                Toast.makeText(BatteryMainActivity.this,"code->" +code,Toast.LENGTH_SHORT).show();
+
+                // requestPermissions(new String[]{Manifest.permission.QUERY_ALL_PACKAGES},200);
+
+                getInstallList();
+            }
+        },5000);
+    }
+
+    private void getInstallList() {
+        try {
+            List<PackageInfo> installedPackages = getPackageManager().getInstalledPackages(0);
+            if (installedPackages!=null&&installedPackages.size()>0){
+                for (int i=0;i<installedPackages.size();i++){
+                    Log.e("pppeee",installedPackages.get(i).packageName);
+                }
+                Toast.makeText(this, "应用数量 -> "+installedPackages.size(), Toast.LENGTH_SHORT).show();
+            }else {
+                Log.e("pppeee","installedPackages == null or empty");
+            }
+        }catch (Exception e){
+            Log.e("pppeee",e.toString());
+        }
     }
 
     private void registerBatteryReceiver() {
@@ -144,5 +187,10 @@ public class BatteryMainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(batteryReceiver);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

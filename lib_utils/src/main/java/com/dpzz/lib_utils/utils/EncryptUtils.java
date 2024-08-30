@@ -1,7 +1,8 @@
 package com.dpzz.lib_utils.utils;
 
-import static com.blankj.utilcode.utils.ConvertUtils.bytes2HexString;
-import static com.blankj.utilcode.utils.ConvertUtils.hexString2Bytes;
+
+import static com.dpzz.lib_utils.utils.ConvertUtils.bytes2HexString;
+import static com.dpzz.lib_utils.utils.ConvertUtils.hexString2Bytes;
 
 import java.io.File;
 import java.io.FileInputStream;

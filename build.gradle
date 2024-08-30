@@ -5,6 +5,7 @@
 apply from : 'config.gradle'
 
 buildscript {
+
     ext.kotlin_version = '1.6.10'
    // ext.kotlin_version = '1.5.20'
     repositories {
@@ -15,12 +16,16 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
         maven { url 'https://jitpack.io' }
         maven { url "https://s01.oss.sonatype.org/content/groups/public" }
+        maven {
+            allowInsecureProtocol = true
+            url "http://maven.rongcloud.cn/repository/maven-releases/"
+        }
 
         google()
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.2"
+        classpath "com.android.tools.build:gradle:7.4.2"
        // classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 

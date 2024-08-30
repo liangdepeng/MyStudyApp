@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">安卓开发工具</string>
+    <string name="my_quick_service_info">安卓开发工具部分功能需要您授权无障碍模式才可以方便您的开发，谢谢合作！</string>
 </resources>

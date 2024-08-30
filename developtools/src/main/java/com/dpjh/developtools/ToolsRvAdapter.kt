@@ -3,8 +3,10 @@ package com.dpjh.developtools
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.dpjh.developtools.databinding.ItemToolsBinding
 
@@ -35,11 +37,11 @@ class ToolsRvAdapter(private val context: Context) :
         holder.itemBinding.descTv.text = toolsItemBean.desc
         try {
             holder.itemBinding.icon.setImageResource(toolsItemBean.icon as Int)
-        } catch (e :Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
             holder.itemBinding.icon.setImageResource(R.mipmap.ic_launcher)
         }
-       // Glide.with(context).load(toolsItemBean.icon).into(holder.itemBinding.icon)
+        // Glide.with(context).load(toolsItemBean.icon).into(holder.itemBinding.icon)
     }
 
     override fun getItemCount(): Int {
@@ -54,8 +56,29 @@ class ToolsRvAdapter(private val context: Context) :
                 if (position < 0 || position > dataList.size - 1) {
                     return@setOnClickListener
                 }
-                val toolsItemBean = dataList[position]
-                context.startActivity(Intent(context, toolsItemBean.clazz))
+                try {
+                    val toolsItemBean = dataList[position]
+                    if (toolsItemBean.clazz != null) {
+                        context.startActivity(Intent(context, toolsItemBean.clazz))
+                    } else {
+                        jumpPageByFunctionCode(toolsItemBean.code)
+                    }
+                } catch (e:Exception){
+                    e.printStackTrace()
+                    Toast.makeText(context, "跳转失败  $e", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun jumpPageByFunctionCode(code: String?) {
+        when (code) {
+            Constants.CODE_LAYOUT_QUERY -> {
+                Settings.Global.putInt(context.getContentResolver(), Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 1)
+                //Settings.Global.putInt(context.getContentResolver(), "debug.layout", 1);
+            }
+            else -> {
+                Toast.makeText(context, "$code 未定义", Toast.LENGTH_SHORT).show()
             }
         }
     }
