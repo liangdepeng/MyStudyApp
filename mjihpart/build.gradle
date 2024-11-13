@@ -1,4 +1,4 @@
-if (isOpenPlugin){
+if (isOpenPluginCompile){
     apply plugin: 'com.android.application'
 }else {
     apply plugin: 'com.android.library'
@@ -20,7 +20,7 @@ android {
 
     compileSdk androidConfig.compileSdk
     defaultConfig {
-        if (isOpenPlugin){
+        if (isOpenPluginCompile){
             applicationId "com.dpjh.mjihpart"
         }
         minSdk androidConfig.minSdk

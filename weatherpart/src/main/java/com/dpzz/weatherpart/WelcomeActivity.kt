@@ -1,6 +1,8 @@
 package com.dpzz.weatherpart
 
 import android.app.AlertDialog
+import android.content.Intent
+import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -24,6 +26,7 @@ class WelcomeActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     override fun initData() {
+        WeatherCacheManager.getInstance().init()
 //        handler.postDelayed({
 //            JumpUtils.into(this, ChooseCityActivity::class.java)
 //        }, 1500)
@@ -34,6 +37,17 @@ class WelcomeActivity : BaseActivity<ActivitySplashBinding>() {
             getPrivaryDialog().show()
         } else {
             handler.postDelayed({
+                val locations = WeatherCacheManager.getInstance().locationList
+                if (!locations.isNullOrEmpty()){
+                    val bean = locations.get(0)
+                    if (!bean.locationId.isNullOrEmpty()){
+                        startActivity(Intent(this, WeatherMainActivity::class.java)
+                            .putExtra(Constants.KEY_LOCATION_ID,bean.locationId)
+                            .putExtra(Constants.KEY_LOCATION_NAME,bean.locationName))
+                        finish()
+                        return@postDelayed
+                    }
+                }
                 JumpUtils.into(this, ChooseCityActivity::class.java)
                 finish()
             }, 1000)

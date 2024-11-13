@@ -9,7 +9,7 @@
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:cardBackgroundColor="#ffffff"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="6dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -64,7 +64,19 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/status_iv"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 
 </FrameLayout>

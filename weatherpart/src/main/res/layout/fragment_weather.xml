@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f3f3f3"
@@ -10,20 +11,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="-6dp"
+            android:layout_marginRight="8dp"
+            app:bl_corners_radius="10dp"
+            app:bl_solid_color="#19000000"
+            app:layout_constraintBottom_toBottomOf="@+id/hourly24_rv"
+            app:layout_constraintTop_toTopOf="@+id/hourly24_rv" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/hourly24_rv"
-            android:nestedScrollingEnabled="false"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="8dp"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <View-->
-<!--            android:id="@+id/vv"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="1000dp"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/hourly24_rv" />-->
+        <!--        <View-->
+        <!--            android:id="@+id/vv"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="1000dp"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/hourly24_rv" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

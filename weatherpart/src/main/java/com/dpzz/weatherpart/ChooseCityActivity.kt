@@ -1,6 +1,7 @@
 package com.dpzz.weatherpart
 
 import android.content.Intent
+import android.text.TextUtils
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
@@ -9,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dpzz.lib_base.base.BaseActivity
-import com.dpzz.lib_base.jump.JumpUtils
 import com.dpzz.lib_base.recyclerview.BaseRecyclerViewAdapter
 import com.dpzz.lib_base.recyclerview.OnMyItemClickListener
 import com.dpzz.lib_base.util.ToastUtil
@@ -18,15 +18,15 @@ import com.google.gson.Gson
 import com.qweather.sdk.bean.base.Lang
 import com.qweather.sdk.bean.base.Range
 import com.qweather.sdk.bean.geo.GeoBean
-import com.qweather.sdk.bean.weather.WeatherDailyBean
 import com.qweather.sdk.view.QWeather
 
 class ChooseCityActivity : BaseActivity<ActivityChooseCityBinding>(), OnMyItemClickListener {
 
     private val locationAdapter by lazy { LocationAdapter(this) }
     private val searchAdapter by lazy { SearchResultAdapter(this) }
-
+    private var pageFrom = ""
     override fun initData() {
+        pageFrom = intent?.getStringExtra(Constants.KEY_PAGE_FROM)?:""
     }
 
     override fun initView() {
@@ -49,10 +49,18 @@ class ChooseCityActivity : BaseActivity<ActivityChooseCityBinding>(), OnMyItemCl
         searchAdapter.setItemClickListener { adapter, position ->
             val itemData = searchAdapter.getItemData(position)
             if (itemData != null){
-                val intent = Intent(this, WeatherMainActivity::class.java)
-                    .putExtra(Constants.KEY_LOCATION_ID,itemData.id)
-                    .putExtra(Constants.KEY_LOCATION_NAME,itemData.name)
-                startActivity(intent)
+                WeatherCacheManager.getInstance().addLocation(itemData.id,itemData.name)
+                if (TextUtils.equals(pageFrom, Constants.KEY_PAGE_WEATHER_MAIN)){
+                    val intent = Intent()
+                    intent.putExtra(Constants.KEY_LOCATION_ID,itemData.id)
+                        .putExtra(Constants.KEY_LOCATION_NAME,itemData.name)
+                    setResult(RESULT_OK,intent)
+                }else{
+                    val intent = Intent(this, WeatherMainActivity::class.java)
+                        .putExtra(Constants.KEY_LOCATION_ID,itemData.id)
+                        .putExtra(Constants.KEY_LOCATION_NAME,itemData.name)
+                    startActivity(intent)
+                }
                 finish()
             }
         }
@@ -85,7 +93,7 @@ class ChooseCityActivity : BaseActivity<ActivityChooseCityBinding>(), OnMyItemCl
 
         KeyBoardUtil.dismissInputMethod(mViewBinding.searchEt)
 
-        QWeather.getGeoCityLookup(this,searchKey, object : QWeather.OnResultGeoListener{
+        QWeather.getGeoCityLookup(this,searchKey,Range.CN,20, Lang.ZH_HANS, object : QWeather.OnResultGeoListener{
             override fun onError(t: Throwable?) {
                 runOnUiThread { ToastUtil.show2(t?.message?:"请求异常，请稍后重试") }
             }
@@ -108,10 +116,18 @@ class ChooseCityActivity : BaseActivity<ActivityChooseCityBinding>(), OnMyItemCl
 
     override fun onItemClick(adapter: BaseRecyclerViewAdapter<*, *>?, position: Int) {
         val locationBean = locationAdapter.getItemData(position)
-        val intent = Intent(this, WeatherMainActivity::class.java)
-            .putExtra(Constants.KEY_LOCATION_ID,locationBean?.id)
-            .putExtra(Constants.KEY_LOCATION_NAME,locationBean?.name)
-        startActivity(intent)
+        WeatherCacheManager.getInstance().addLocation(locationBean?.id,locationBean?.name)
+        if (TextUtils.equals(pageFrom, Constants.KEY_PAGE_WEATHER_MAIN)){
+            val intent = Intent()
+            intent.putExtra(Constants.KEY_LOCATION_ID,locationBean?.id)
+            intent.putExtra(Constants.KEY_LOCATION_NAME,locationBean?.name)
+            setResult(RESULT_OK,intent)
+        }else{
+            val intent = Intent(this, WeatherMainActivity::class.java)
+                .putExtra(Constants.KEY_LOCATION_ID,locationBean?.id)
+                .putExtra(Constants.KEY_LOCATION_NAME,locationBean?.name)
+            startActivity(intent)
+        }
         finish()
     }
 }

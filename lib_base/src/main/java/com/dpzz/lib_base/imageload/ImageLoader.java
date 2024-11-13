@@ -2,7 +2,9 @@ package com.dpzz.lib_base.imageload;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Picture;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.widget.ImageView;
 
@@ -17,6 +19,8 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.caverock.androidsvg.SVG;
+import com.dpzz.lib_base.GlobalContext;
 
 import java.io.File;
 import java.net.URL;
@@ -37,6 +41,19 @@ public class ImageLoader {
     public void loadImage(ImageView imageView, Object url) {
         if (imageView != null) {
             loadImage(imageView.getContext(), imageView, url);
+        }
+    }
+
+    public void loadAssetsSvgImage(ImageView imageView,String filePath, int width,int height){
+        try {
+            SVG svg = SVG.getFromAsset(GlobalContext.mContext.getAssets(),filePath);  // "icons/100.svg"
+            svg.setDocumentHeight(height);
+            svg.setDocumentWidth(width);
+            Picture picture = svg.renderToPicture();
+            PictureDrawable pictureDrawable = new PictureDrawable(picture);
+            imageView.setImageDrawable(pictureDrawable);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

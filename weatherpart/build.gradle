@@ -1,4 +1,4 @@
-if (isOpenPlugin){
+if (isOpenPluginCompile){
     apply plugin: 'com.android.application'
 }else {
     apply plugin: 'com.android.library'
@@ -11,7 +11,7 @@ android {
     compileSdk androidConfig.compileSdk
 
     defaultConfig {
-        if (isOpenPlugin){
+        if (isOpenPluginCompile){
             applicationId "com.dpzz.weatherpart"
         }
         minSdk androidConfig.minSdk
@@ -31,6 +31,16 @@ android {
         enabled = true
     }
 
+    sourceSets {
+        main {
+            if (isOpenPluginCompile) {
+                manifest.srcFile 'src/main/manifest/testapp/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/manifest/plugin/AndroidManifest.xml'
+            }
+        }
+    }
+
 
     buildTypes {
         release {
@@ -45,6 +55,8 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+
 }
 
 dependencies {
@@ -59,7 +71,7 @@ dependencies {
 
     implementation project(path: ':lib_base')
 
-    implementation 'com.tencent.bugly:crashreport:latest.release'
+
  //   implementation "androidx.core:core-ktx:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

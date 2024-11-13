@@ -1,6 +1,6 @@
 ext {
-    // 插件化
-    isOpenPlugin = true
+    // 插件化编译
+    isOpenPluginCompile = true
 
     android = [
             versionCode: 1,

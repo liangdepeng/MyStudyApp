@@ -9,7 +9,7 @@ android {
 
     compileSdk androidConfig.compileSdk
     defaultConfig {
-        if (isOpenPlugin){
+        if (isOpenPluginCompile){
             applicationId "com.dpzz.mvapp"
         }
         minSdk androidConfig.minSdk

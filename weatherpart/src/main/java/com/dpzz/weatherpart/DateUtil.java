@@ -26,7 +26,8 @@ public class DateUtil {
             // Convert OffsetDateTime to LocalDateTime
             LocalDateTime localDateTime = offsetDateTime.toLocalDateTime();
             // Define the desired output format
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd HH:mm");
+         //   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd HH:mm");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
             // Format the LocalDateTime to the desired format
             return localDateTime.format(formatter);
         }else {
@@ -39,7 +40,8 @@ public class DateUtil {
                 // Parse the ISO 8601 date-time string to a Date object
                 Date date = inputFormat.parse(isoDateTime);
                 // Define the desired output format
-                SimpleDateFormat outputFormat = new SimpleDateFormat("MM-dd HH:mm");
+               // SimpleDateFormat outputFormat = new SimpleDateFormat("MM-dd HH:mm");
+                SimpleDateFormat outputFormat = new SimpleDateFormat("HH:mm");
                 outputFormat.setTimeZone(TimeZone.getDefault());
                 // Format the Date object to the desired format
                 String formattedDateTime = outputFormat.format(date);

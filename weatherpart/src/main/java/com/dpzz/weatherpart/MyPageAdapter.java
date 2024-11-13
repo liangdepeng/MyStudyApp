@@ -24,6 +24,10 @@ public class MyPageAdapter extends FragmentPagerAdapter {
         this.fragments.addAll(fragments);
     }
 
+    public List<Fragment> getFragments() {
+        return fragments;
+    }
+
     @NonNull
     @Override
     public Fragment getItem(int position) {
