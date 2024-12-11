@@ -24,108 +24,20 @@
                 android:layout_height="wrap_content"
                 app:layout_collapseMode="parallax">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card"
+                <include
+                    android:id="@+id/top_card"
+                    layout="@layout/part_top_main_weather_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="70dp"
                     android:layout_marginRight="12dp"
-                    app:cardBackgroundColor="#ffffff"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="6dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/now_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp" />
-
-                    <com.dpzz.weatherpart.IndicatorView
-                        android:id="@+id/indicator_ll"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|center_horizontal"
-                        android:layout_marginTop="12dp" />
-
-                    <ImageView
-                        android:id="@+id/now_iv"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_gravity="center_vertical|end"
-                        android:layout_marginRight="60dp" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/simple_temp_cl"
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-
-                        <androidx.constraintlayout.widget.Group
-                            android:id="@+id/simple_content_group"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:constraint_referenced_ids="tv_temp,tv_temp_desc,iv_tempp,tv_windy_desc" />
-
-                        <TextView
-                            android:id="@+id/tv_temp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="20dp"
-                            android:includeFontPadding="false"
-                            android:textSize="70sp"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:text="30" />
-
-                        <TextView
-                            android:id="@+id/tv_temp_desc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="6dp"
-                            android:includeFontPadding="false"
-                            app:layout_constraintLeft_toLeftOf="@id/tv_temp"
-                            app:layout_constraintTop_toBottomOf="@id/tv_temp"
-                            tools:text="多云  23°" />
-
-                        <TextView
-                            android:id="@+id/tv_windy_desc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="6dp"
-                            android:layout_marginTop="6dp"
-                            android:includeFontPadding="false"
-                            app:layout_constraintLeft_toLeftOf="@id/tv_temp_desc"
-                            app:layout_constraintTop_toBottomOf="@id/tv_temp_desc"
-                            tools:text="多云  23°" />
-
-                        <Space
-                            app:layout_constraintTop_toBottomOf="@+id/tv_windy_desc"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"/>
-
-                        <ImageView
-                            android:id="@+id/iv_tempp"
-                            android:layout_width="66dp"
-                            android:layout_height="66dp"
-                            android:layout_marginLeft="40dp"
-                            app:layout_constraintLeft_toRightOf="@id/tv_temp"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                </androidx.cardview.widget.CardView>
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
-                    app:layout_constraintTop_toBottomOf="@+id/card" />
+                    app:layout_constraintTop_toBottomOf="@+id/top_card" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

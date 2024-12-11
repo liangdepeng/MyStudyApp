@@ -1,4 +1,4 @@
-package com.dpzz.weatherpart;
+package com.dpzz.weatherpart.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

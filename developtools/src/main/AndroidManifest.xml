@@ -35,7 +35,6 @@
         <activity android:name=".activitytools.ActivityToolsPage" />
 
         <service android:name=".activitytools.WatchService" />
-
         <service
             android:name=".MyQuickService"
             android:exported="true"
@@ -43,29 +42,23 @@
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
+
             <meta-data
                 android:name="android.accessibilityservice"
-                android:resource="@xml/quickserviceconfig"/>
-        </service>
-
-        <!-- 配置APP ID -->
+                android:resource="@xml/quickserviceconfig" />
+        </service> <!-- 配置APP ID -->
         <meta-data
             android:name="BUGLY_APPID"
-            android:value="441103b594" />
-        <!-- 配置APP版本号 -->
+            android:value="441103b594" /> <!-- 配置APP版本号 -->
         <meta-data
             android:name="BUGLY_APP_VERSION"
-            android:value="1.0.0" />
-        <!-- 配置APP渠道号 -->
+            android:value="1.0.0" /> <!-- 配置APP渠道号 -->
         <meta-data
             android:name="BUGLY_APP_CHANNEL"
-            android:value="1000001" />
-        <!-- 配置Bugly调试模式（true或者false）-->
+            android:value="1000001" /> <!-- 配置Bugly调试模式（true或者false） -->
         <meta-data
             android:name="BUGLY_ENABLE_DEBUG"
             android:value="false" />
-
     </application>
-
 
 </manifest>

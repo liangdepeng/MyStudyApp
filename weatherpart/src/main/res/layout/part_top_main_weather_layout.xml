@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dpzz.weatherpart.view.TopMainWeatherView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="#ffffff"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="6dp"
+    app:cardPreventCornerOverlap="false">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/now_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp" />
+
+    <com.dpzz.weatherpart.view.IndicatorView
+        android:id="@+id/indicator_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="12dp" />
+
+    <ImageView
+        android:id="@+id/now_iv"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginRight="60dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/simple_temp_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/simple_content_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="tv_temp,tv_temp_desc,iv_tempp,tv_windy_desc" />
+
+        <TextView
+            android:id="@+id/tv_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:includeFontPadding="false"
+            android:textSize="70sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="30" />
+
+        <TextView
+            android:id="@+id/tv_temp_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:includeFontPadding="false"
+            app:layout_constraintLeft_toLeftOf="@id/tv_temp"
+            app:layout_constraintTop_toBottomOf="@id/tv_temp"
+            tools:text="多云  23°" />
+
+        <TextView
+            android:id="@+id/tv_windy_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            android:includeFontPadding="false"
+            app:layout_constraintLeft_toLeftOf="@id/tv_temp_desc"
+            app:layout_constraintTop_toBottomOf="@id/tv_temp_desc"
+            tools:text="多云  23°" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_windy_desc" />
+
+        <ImageView
+            android:id="@+id/iv_tempp"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_marginLeft="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_temp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.dpzz.weatherpart.view.TopMainWeatherView>
+

@@ -2,7 +2,6 @@ package com.dpzz.weatherpart
 
 import android.content.Intent
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
@@ -17,9 +16,9 @@ import com.dpzz.lib_base.setonMyClickListener
 import com.dpzz.lib_base.util.PxUtils
 import com.dpzz.lib_base.util.SPUtil
 import com.dpzz.lib_base.util.ToastUtil
-import com.dpzz.weatherpart.database.DataBaseDao
+import com.dpzz.weatherpart.adapter.MyPageAdapter
+import com.dpzz.weatherpart.adapter.NowAdapter
 import com.dpzz.weatherpart.databinding.ActivityWeatherMainBinding
-import com.google.gson.Gson
 import com.qweather.sdk.bean.weather.WeatherNowBean
 import com.qweather.sdk.view.QWeather
 
@@ -27,7 +26,6 @@ class WeatherMainActivity : BaseActivity<ActivityWeatherMainBinding>() {
 
     private var currentLocationId: String? = ""
     private var locationName: String? = ""
-    private val nowDetailAdapter by lazy { NowAdapter(this) }
     private var mPagerAdapter: MyPageAdapter? = null
     private val pageMap = hashMapOf<String, Fragment>()
     private var nowWeatherMap = hashMapOf<String, WeatherNowBean>()
@@ -39,8 +37,7 @@ class WeatherMainActivity : BaseActivity<ActivityWeatherMainBinding>() {
         showMode = intent?.getIntExtra(Constants.KEY_PAGE_MODE, 1) ?: 1
         currentLocationId = intent?.getStringExtra(Constants.KEY_LOCATION_ID)
         locationName = intent?.getStringExtra(Constants.KEY_LOCATION_NAME)
-        resultLauncher =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult(), object :
+        resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult(), object :
                 ActivityResultCallback<ActivityResult> {
                 override fun onActivityResult(result: ActivityResult?) {
                     if (result == null)
@@ -73,13 +70,13 @@ class WeatherMainActivity : BaseActivity<ActivityWeatherMainBinding>() {
                             mPagerAdapter = MyPageAdapter(supportFragmentManager, fragments)
                             mViewBinding.viewpager.adapter = mPagerAdapter
                             currentLocationId = locationId
-                            mViewBinding.indicatorLl.initIndicator(fragments.size,0)
+                            mViewBinding.topCard.indicatorLl.initIndicator(fragments.size,0)
                         } else {
                             val fragment = pageMap.get(locationId)
                             val index = mPagerAdapter?.fragments?.indexOf(fragment)
                             if (index != null){
                                 mViewBinding.viewpager.setCurrentItem(index)
-                                mViewBinding.indicatorLl.setCurrentPosition(index)
+                                mViewBinding.topCard.indicatorLl.setCurrentPosition(index)
                             }
 
                         }
@@ -99,10 +96,8 @@ class WeatherMainActivity : BaseActivity<ActivityWeatherMainBinding>() {
             val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
         }
-        mViewBinding.nowRv.layoutManager = LinearLayoutManager(this)
-        mViewBinding.nowRv.adapter = nowDetailAdapter
 
-        switchUIMode()
+        mViewBinding.topCard.card.switchUIMode(showMode)
 
         val locations = WeatherCacheManager.getInstance().locationList
         val fragments = arrayListOf<Fragment>()
@@ -117,9 +112,7 @@ class WeatherMainActivity : BaseActivity<ActivityWeatherMainBinding>() {
                 pageMap.put(bean.locationId, fragment)
             }
         }
-//        fragments.add(WeatherFragment.newInstance(1))
-//        fragments.add(WeatherFragment.newInstance(2))
-//        fragments.add(WeatherFragment.newInstance(3))
+
         mViewBinding.viewpager.offscreenPageLimit = fragments.size
         mPagerAdapter = MyPageAdapter(supportFragmentManager, fragments)
         mViewBinding.viewpager.adapter = mPagerAdapter
@@ -128,8 +121,7 @@ class WeatherMainActivity : BaseActivity<ActivityWeatherMainBinding>() {
             }
 
             override fun onPageSelected(position: Int) {
-
-                mViewBinding.indicatorLl.setCurrentPosition(position)
+                mViewBinding.topCard.indicatorLl.setCurrentPosition(position)
 
                 val fragment = mPagerAdapter?.getItem(position)
                 pageMap.forEach {
@@ -140,7 +132,7 @@ class WeatherMainActivity : BaseActivity<ActivityWeatherMainBinding>() {
                         // 顶部天气
                         val nowBean = nowWeatherMap[it.key]
 
-                        updateTopWeather(nowBean)
+                      mViewBinding.topCard.card.updateTopWeather(nowBean)
                         return@forEach
                     }
                 }
@@ -151,7 +143,7 @@ class WeatherMainActivity : BaseActivity<ActivityWeatherMainBinding>() {
             }
         })
 
-        mViewBinding.indicatorLl.initIndicator(fragments.size,0)
+        mViewBinding.topCard.indicatorLl.initIndicator(fragments.size,0)
 
         requestWeatherDetail(currentLocationId, locationName)
         WeatherCacheManager.getInstance().locationList.forEach {
@@ -161,29 +153,7 @@ class WeatherMainActivity : BaseActivity<ActivityWeatherMainBinding>() {
         }
     }
 
-    private fun updateTopWeather(nowBean: WeatherNowBean?) {
-        val dp66 = PxUtils.dip2px(this@WeatherMainActivity, 66f)
-        nowDetailAdapter.setData(getDataList(nowBean))
-        ImageLoader.getInstance().loadAssetsSvgImage(mViewBinding.nowIv,"icons/${nowBean?.now?.icon}.svg",dp66,dp66)
 
-        mViewBinding.tvTemp.text = "${nowBean?.now?.temp}℃"
-        mViewBinding.tvTempDesc.text = "${nowBean?.now?.text} 最高0℃ 最低0℃"
-        mViewBinding.tvWindyDesc.text = "${nowBean?.now?.windDir} ${nowBean?.now?.windScale}级"
-        ImageLoader.getInstance().loadAssetsSvgImage(mViewBinding.ivTempp, "icons/${nowBean?.now?.icon}.svg", dp66, dp66)
-    }
-
-    private fun switchUIMode(){
-        if (showMode == 1){
-            mViewBinding.simpleTempCl.visibility = View.GONE
-            mViewBinding.nowRv.visibility = View.VISIBLE
-            mViewBinding.nowIv.visibility = View.VISIBLE
-
-        }else{
-            mViewBinding.simpleTempCl.visibility = View.VISIBLE
-            mViewBinding.nowRv.visibility = View.GONE
-            mViewBinding.nowIv.visibility = View.GONE
-        }
-    }
 
     override fun onBackPressed() {
         if (isTaskRoot) {
@@ -201,23 +171,6 @@ class WeatherMainActivity : BaseActivity<ActivityWeatherMainBinding>() {
                     ToastUtil.show2(e?.message)
             }
 
-            /**
-             * getObsTime	实况观测时间	2013-12-30T13:14+08:00
-             * getFeelsLike	体感温度，默认单位：摄氏度	23
-             * getTemp	温度，默认单位：摄氏度	21
-             * getIcon	天气状况的图标代码，另请参考天气图标项目	100
-             * getText	天气状况的文字描述，包括阴晴雨雪等天气状态的描述	晴
-             * getWind360	风向360角度	305
-             * getWindDir	风向	西北
-             * getWindScale	风力等级	3-4
-             * getWindSpeed	风速，公里/小时	15
-             * getHumidity	相对湿度	40
-             * getPrecip	降水量	0
-             * getPressure	大气压强	1020
-             * getVis	能见度，默认单位：公里	10
-             * getCloud	云量	23
-             * getDew	露点温度
-             */
             override fun onSuccess(bean: WeatherNowBean?) {
                 runOnUiThread {
                     if (locationId != null && bean != null) {
@@ -225,61 +178,11 @@ class WeatherMainActivity : BaseActivity<ActivityWeatherMainBinding>() {
                         nowWeatherMap.put(locationId, bean)
                     }
                     if (currentLocationId == locationId) {
-                        updateTopWeather(bean)
+                        mViewBinding.topCard.card.updateTopWeather(bean)
                     }
                 }
             }
         })
-    }
-
-    private fun getDataList(bean: WeatherNowBean?): List<String> {
-        if (bean == null)
-            return emptyList()
-        val datas = arrayListOf<String>()
-        datas.add(buildString {
-            append("观测时间:")
-            append(bean.now?.obsTime)
-        })
-        datas.add(buildString {
-            append("天气状况:")
-            append(bean.now?.text)
-        })
-        datas.add(buildString {
-            append("温度:")
-            append(bean.now?.temp)
-            append("℃")
-        })
-        datas.add(buildString {
-            append("体感温度:")
-            append(bean.now?.feelsLike)
-            append("℃")
-        })
-        datas.add(buildString {
-            append("湿度:")
-            append(bean.now?.humidity)
-            append("%")
-        })
-        datas.add(buildString {
-            append("降水量:")
-            append(bean.now?.precip)
-            append("mm")
-        })
-        datas.add(buildString {
-            append("风:")
-            append(bean.now?.windDir)
-            append(" ")
-            append(bean.now?.windScale)
-            append("级")
-            append(" ")
-            append(bean.now?.windSpeed)
-            append("km/h")
-        })
-        datas.add(buildString {
-            append("能见度:")
-            append(bean.now?.vis)
-            append("km")
-        })
-        return datas
     }
 
     override fun onResume() {
@@ -287,7 +190,7 @@ class WeatherMainActivity : BaseActivity<ActivityWeatherMainBinding>() {
         val mode = SPUtil.getInt(Constants.KEY_PAGE_MODE,1)
         if (mode!=showMode){
             showMode = mode
-            switchUIMode()
+            mViewBinding.topCard.card.switchUIMode(showMode)
         }
     }
 }

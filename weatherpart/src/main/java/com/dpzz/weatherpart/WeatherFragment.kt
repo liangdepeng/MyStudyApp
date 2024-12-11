@@ -2,17 +2,12 @@ package com.dpzz.weatherpart
 
 import android.os.Bundle
 import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.dpzz.lib_base.base.BaseFragment
-import com.dpzz.lib_base.imageload.ImageLoader
 import com.dpzz.lib_base.util.SPUtil
-import com.dpzz.lib_base.util.ToastUtil
 import com.dpzz.weatherpart.databinding.FragmentWeatherBinding
 import com.google.gson.Gson
 import com.qweather.sdk.bean.weather.WeatherDailyBean
 import com.qweather.sdk.bean.weather.WeatherHourlyBean
-import com.qweather.sdk.bean.weather.WeatherNowBean
 import com.qweather.sdk.view.QWeather
 import org.json.JSONObject
 
@@ -34,17 +29,14 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
     }
 
     private var location: String? = ""
-    private val hourlyAdapter by lazy { HourlyAdapter(mContext) }
-    private val hourlySimpleAdapter by lazy { HourlySimpleAdapter(mContext) }
-
     private var showMode = 1
 
     override fun initContentView() {
         location = arguments?.getString("locationId", "")
         showMode = SPUtil.getInt(Constants.KEY_PAGE_MODE, 1)
-        switchModeUI()
+        mViewBinding.hourlyView.root.switchModeUI(showMode)
         requestWeatherDetail(location)
-        requestWeather7days()
+        requestWeather15days()
 
         //  ImageLoader.getInstance().loadAssetsSvgImage(mViewBinding.image,"icons/100.svg",100,100)
     }
@@ -54,32 +46,19 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
         val mode = SPUtil.getInt(Constants.KEY_PAGE_MODE, 1)
         if (mode != showMode) {
             showMode = mode
-            switchModeUI()
+            mViewBinding.hourlyView.root.switchModeUI(showMode)
             requestWeatherDetail(location)
         }
     }
 
-    private fun switchModeUI() {
-        if (showMode == 1) {
-            mViewBinding.hourly24Rv.layoutManager =
-                LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false)
-            mViewBinding.hourly24Rv.adapter = hourlyAdapter
-        } else {
-            mViewBinding.hourly24Rv.layoutManager =
-                LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false)
-            mViewBinding.hourly24Rv.adapter = hourlySimpleAdapter
-        }
-    }
-
-
-    private fun requestWeather7days() {
+    private fun requestWeather15days() {
         QWeather.getWeather7D(mContext, location, object : QWeather.OnResultWeatherDailyListener {
             override fun onError(t: Throwable?) {
                 Log.e("sadasd", "getWeather7D ${t?.message ?: "errr"}")
             }
 
             override fun onSuccess(bean: WeatherDailyBean?) {
-                //  Log.e("sadasd",JSONObject(Gson().toJson(bean)).toString(2))
+                  Log.e("sadasd", JSONObject(Gson().toJson(bean)).toString(2))
             }
         })
     }
@@ -97,13 +76,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>() {
                 //   val toJson = Gson().toJson(bean)
                 //   Log.e("sadasd",JSONObject(toJson).toString(2))
                 mActivity.runOnUiThread {
-                    if (bean != null) {
-                        if (showMode == 1) {
-                            hourlyAdapter.setData(bean.hourly)
-                        } else {
-                            hourlySimpleAdapter.setData(bean.hourly)
-                        }
-                    }
+                    mViewBinding.hourlyView.root.setData(bean,showMode)
                 }
             }
 

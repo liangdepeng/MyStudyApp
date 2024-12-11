@@ -1,4 +1,4 @@
-package com.dpzz.weatherpart
+package com.dpzz.weatherpart.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import com.dpzz.lib_base.recyclerview.BaseQuickAdapter
 import com.dpzz.lib_base.recyclerview.BaseViewHolder
 import com.dpzz.lib_base.util.PxUtils
 import com.dpzz.weatherpart.databinding.ItemHourlyLayoutBinding
+import com.dpzz.weatherpart.util.DateUtil
 import com.qweather.sdk.bean.weather.WeatherHourlyBean
 
 /**

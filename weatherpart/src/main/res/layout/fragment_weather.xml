@@ -11,26 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="-6dp"
-            android:layout_marginRight="8dp"
-            app:bl_corners_radius="10dp"
-            app:bl_solid_color="#19000000"
-            app:layout_constraintBottom_toBottomOf="@+id/hourly24_rv"
-            app:layout_constraintTop_toTopOf="@+id/hourly24_rv" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/hourly24_rv"
+        <include
+            android:id="@+id/hourly_view"
+            layout="@layout/part_top_hourly_weather_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="8dp"
-            android:nestedScrollingEnabled="false"
+            android:layout_marginRight="10dp"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <!--        <View-->
         <!--            android:id="@+id/vv"-->

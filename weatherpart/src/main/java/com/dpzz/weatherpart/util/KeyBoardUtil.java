@@ -1,4 +1,4 @@
-package com.dpzz.weatherpart;
+package com.dpzz.weatherpart.util;
 
 import android.content.Context;
 import android.view.View;

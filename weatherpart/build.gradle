@@ -27,6 +27,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
+    signingConfigs {
+        release {
+            storeFile file('../weather6.jks')
+            storePassword 'ldp12345'
+            keyAlias 'key66'
+            keyPassword 'ldp12345'
+        }
+    }
+
     viewBinding {
         enabled = true
     }
@@ -45,6 +55,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

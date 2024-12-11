@@ -1,4 +1,4 @@
-package com.dpzz.weatherpart;
+package com.dpzz.weatherpart.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

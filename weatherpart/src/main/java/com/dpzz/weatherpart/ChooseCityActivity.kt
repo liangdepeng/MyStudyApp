@@ -13,7 +13,10 @@ import com.dpzz.lib_base.base.BaseActivity
 import com.dpzz.lib_base.recyclerview.BaseRecyclerViewAdapter
 import com.dpzz.lib_base.recyclerview.OnMyItemClickListener
 import com.dpzz.lib_base.util.ToastUtil
+import com.dpzz.weatherpart.adapter.LocationAdapter
+import com.dpzz.weatherpart.adapter.SearchResultAdapter
 import com.dpzz.weatherpart.databinding.ActivityChooseCityBinding
+import com.dpzz.weatherpart.util.KeyBoardUtil
 import com.google.gson.Gson
 import com.qweather.sdk.bean.base.Lang
 import com.qweather.sdk.bean.base.Range

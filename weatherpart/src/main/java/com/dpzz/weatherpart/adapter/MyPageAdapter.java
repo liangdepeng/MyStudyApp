@@ -1,4 +1,4 @@
-package com.dpzz.weatherpart;
+package com.dpzz.weatherpart.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
