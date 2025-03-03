@@ -48,6 +48,10 @@ dependencies {
     //   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     api 'androidx.constraintlayout:constraintlayout:2.1.4'
+    api 'androidx.constraintlayout:constraintlayout-core:1.0.4'
+    //api 'androidx.core:core:1.15.0'
+
+
 
     api 'com.github.liangdepeng:CatchCrashLib:v1.1'
 

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Android 1.5（Cupcake，API 3）：首次引入桌面小组件功能，开发者可以创建简单的小组件并将其添加到主屏幕。\n
+Android 4.0（Ice Cream Sandwich，API 14）：对小组件进行了改进，支持更灵活的布局和交互。\n
+Android 6.0（Marshmallow，API 23）：小组件的交互趋于稳定，提供了更好的用户体验。\n
+Android 8.0（Oreo，API 26）：支持通过代码将小组件添加到主屏幕，开发者可以更方便地实现小组件的添加和管理"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv22"
+        app:layout_constraintTop_toBottomOf="@+id/tv"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:textAllCaps="false"
+        android:text="小于8.0只能引导用户手动去添加，大于等于Android 8.0可代码添加"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/add_xiaozujian1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="代码添加小组件"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/add_xiaozujian2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="代码添加小组件"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/add_xiaozujian3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="代码添加小组件"
+            android:textAllCaps="false" />
+
+<!--        <Button-->
+<!--            android:id="@+id/add_xiaozujian4"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="代码添加小组件"-->
+<!--            android:textAllCaps="false" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/add_xiaozujian5"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="代码添加小组件"-->
+<!--            android:textAllCaps="false" />-->
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
