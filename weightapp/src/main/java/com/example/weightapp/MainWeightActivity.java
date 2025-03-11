@@ -44,5 +44,12 @@ public class MainWeightActivity extends AppCompatActivity {
                 WidgetManager.requestPinAppWidget(MainWeightActivity.this , NewAppWidget3.class);
             }
         });
+
+        findViewById(R.id.delete_xiaozujian1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WidgetManager.deleteAppWidget(MainWeightActivity.this, NewAppWidget.class);
+            }
+        });
     }
 }

@@ -1,6 +1,7 @@
 package com.example.weightapp;
 
 import android.app.PendingIntent;
+import android.appwidget.AppWidgetHost;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -26,5 +27,24 @@ public class WidgetManager {
                 appWidgetManager.requestPinAppWidget(widgetProvider, null, successCallback);
             }
         }
+    }
+
+
+    // 删除小组件
+    public static void deleteAppWidget(Context context,Class<?> componentClazz) {
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        ComponentName widgetProvider = new ComponentName(context, componentClazz);
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(widgetProvider);
+//        Intent intent = new Intent(AppWidgetManager.ACTION_APPWIDGET_DELETED);
+//        for (int appWidgetId : appWidgetIds) {
+//            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+//            context.sendBroadcast(intent);
+//        }
+
+        AppWidgetHost appWidgetHost = new AppWidgetHost(context, 0);
+        for (int appWidgetId : appWidgetIds) {
+            appWidgetHost.deleteAppWidgetId(appWidgetId);
+        }
+
     }
 }

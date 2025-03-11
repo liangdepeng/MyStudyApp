@@ -40,21 +40,28 @@ Android 8.0（Oreo，API 26）：支持通过代码将小组件添加到主屏�
             android:id="@+id/add_xiaozujian1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="代码添加小组件"
+            android:text="代码添加小组件1"
             android:textAllCaps="false" />
 
         <Button
             android:id="@+id/add_xiaozujian2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="代码添加小组件"
+            android:text="代码添加小组件2"
             android:textAllCaps="false" />
 
         <Button
             android:id="@+id/add_xiaozujian3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="代码添加小组件"
+            android:text="代码添加小组件3"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/delete_xiaozujian1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="代码删除小组件1"
             android:textAllCaps="false" />
 
 <!--        <Button-->
