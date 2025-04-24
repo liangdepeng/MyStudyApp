@@ -34,7 +34,8 @@
 
         <activity
             android:name=".MainWeightActivity"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:theme="@style/maintheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,10 +43,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".WidgetTargetActivity"/>
+        <activity android:name=".WidgetTargetActivity" />
 
-        <activity android:name=".JumpTempActivity"/>
-        <activity android:name=".JumpTempActivity2"/>
+        <activity
+            android:name=".JumpTempActivity"
+            android:theme="@style/maintheme" />
+        <activity
+            android:name=".JumpTempActivity2"
+            android:theme="@style/maintheme" />
 
         <receiver
             android:name=".NewAppWidget"

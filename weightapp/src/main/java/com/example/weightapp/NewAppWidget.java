@@ -45,7 +45,7 @@ public class NewAppWidget extends AppWidgetProvider {
         }
         intent.setClass(context, clazz);
         intent.putExtra("code", code);
-        intent.putExtra("widget22", NewAppWidget.class.getSimpleName());
+        intent.putExtra("widget22", "NewAppWidget");
         intent.putExtra("jump_class", jumpClass);
 
         Log.e("widgetcus"," clazz jump class -> "+jumpClass );

@@ -28,6 +28,7 @@ public class MainWeightActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        overridePendingTransition(0,0);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weight_layout);
         isLaunch = true;
@@ -71,9 +72,11 @@ public class MainWeightActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("widget_config", Context.MODE_PRIVATE);
         String jumpClass = preferences.getString("widget_jump_class", "");
 
-        Log.e("widgetcus","启动 class -> "+jumpClass );
-
         String widget22Tag = intent.getStringExtra("w_widget");
+
+        Log.e("widgetcus","启动 class -> "+jumpClass +" widgettag-> "+widget22Tag);
+
+
         if (NewAppWidget.class.getSimpleName().equals(widget22Tag)){
             if (AppWidgetUtils.JUMP_CLASS1.equals(jumpClass)){
                 preferences.edit().putString("widget_jump_class", AppWidgetUtils.JUMP_CLASS2).apply();
@@ -82,9 +85,9 @@ public class MainWeightActivity extends AppCompatActivity {
             }
             String temoclazz = preferences.getString("widget_jump_class", "");
             Log.e("widgetcus","更换后 class -> "+temoclazz );
-
-            AppWidgetUtils.notifyDataUpdate(this, NewAppWidget.class);
         }
+
+        AppWidgetUtils.notifyDataUpdate(this, NewAppWidget.class);
     }
 
     private void dealMsgWidget(Intent intent){
@@ -128,5 +131,12 @@ public class MainWeightActivity extends AppCompatActivity {
         }else {
             super.onBackPressed();
         }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        overridePendingTransition(0,0);
+        super.onDestroy();
     }
 }

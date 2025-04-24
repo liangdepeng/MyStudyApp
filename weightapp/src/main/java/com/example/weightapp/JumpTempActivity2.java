@@ -18,6 +18,6 @@ public class JumpTempActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         JumpTempActivity.dealJumpInfo(this,getIntent());
         finish();
+        overridePendingTransition(0,0);
     }
-
 }

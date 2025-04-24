@@ -21,6 +21,7 @@ public class JumpTempActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         dealJumpInfo(this,getIntent());
         finish();
+        overridePendingTransition(0, 0);
     }
 
     public static void dealJumpInfo(Activity activity,Intent data){
