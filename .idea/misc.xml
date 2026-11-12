@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ASMSmaliIdeaPluginConfiguration">
     <asm skipDebug="true" skipFrames="true" skipCode="false" expandFrames="false" />
@@ -7,24 +6,58 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/movieStudy/app/src/main/res/layout/activity_main.xml" value="0.16979166666666667" />
+        <entry key="..\:/movieStudy/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/movieStudy/app/src/main/res/layout/activity_splash.xml" value="0.16979166666666667" />
+        <entry key="..\:/movieStudy/batteryinfo/src/main/res/layout/activity_battery_main.xml" value="0.271286231884058" />
+        <entry key="..\:/movieStudy/batteryinfo/src/main/res/layout/activity_shake_layout.xml" value="0.17198581560283688" />
+        <entry key="..\:/movieStudy/developtools/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/movieStudy/developtools/src/main/res/layout/activity_tools_page.xml" value="0.25" />
+        <entry key="..\:/movieStudy/developtools/src/main/res/layout/current_activity_window_float_layout.xml" value="0.5759368836291914" />
+        <entry key="..\:/movieStudy/developtools/src/main/res/layout/item_activity_info.xml" value="0.5" />
+        <entry key="..\:/movieStudy/developtools/src/main/res/layout/item_tools.xml" value="0.25" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.24583333333333332" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/drawable/ic_home_black_24dp.xml" value="0.24583333333333332" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.24583333333333332" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/layout/activity_chat_home.xml" value="0.3536458333333333" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/layout/activity_chat_liat.xml" value="0.1766304347826087" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/layout/activity_main.xml" value="0.18177083333333333" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/layout/activity_main2.xml" value="0.21510416666666668" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/layout/activity_register.xml" value="0.22" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/layout/fragment_friend.xml" value="0.2" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/layout/fragment_home.xml" value="0.2296875" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/layout/fragment_mine.xml" value="0.25" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/layout/fragment_person.xml" value="0.25" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/layout/item_friend.xml" value="0.25" />
+        <entry key="..\:/movieStudy/imapplication/src/main/res/menu/bottom_nav_menu.xml" value="0.2296875" />
+        <entry key="..\:/movieStudy/lib_base/src/main/res/layout/dialog_update_tip.xml" value="0.1947463768115942" />
+        <entry key="..\:/movieStudy/lib_base/src/main/res/layout/item_swipe_layout.xml" value="0.3536458333333333" />
+        <entry key="..\:/movieStudy/lib_utils/src/main/res/xml/file_path.xml" value="0.1480978260869565" />
         <entry key="..\:/movieStudy/lib_video/src/main/res/layout/activity_video.xml" value="0.21145833333333333" />
         <entry key="..\:/movieStudy/lib_video/src/main/res/layout/video_player_layout.xml" value="0.17604166666666668" />
+        <entry key="..\:/movieStudy/mjihpart/src/main/res/layout/item_jih_miji.xml" value="0.24270833333333333" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/drawable/home_bottom_tab_text_seclector.xml" value="0.178125" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/activity_movie_detail.xml" value="0.19375" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/activity_mv_main.xml" value="0.22" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/activity_mv_splash.xml" value="0.25" />
+        <entry key="..\:/movieStudy/mvpart/src/main/res/layout/dialog_update_tip.xml" value="0.18229166666666666" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/fragment_discuss.xml" value="0.16197916666666667" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/fragment_home_recommand.xml" value="0.2" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/fragment_mine.xml" value="0.16197916666666667" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/fragment_ticket.xml" value="0.16197916666666667" />
         <entry key="..\:/movieStudy/mvpart/src/main/res/layout/item_recommend_mv.xml" value="0.13425925925925927" />
+        <entry key="..\:/movieStudy/weatherpart/src/main/res/drawable/ic_launcher_background.xml" value="0.17552083333333332" />
+        <entry key="..\:/movieStudy/weatherpart/src/main/res/layout/activity_choose_city.xml" value="0.259375" />
+        <entry key="..\:/movieStudy/weatherpart/src/main/res/layout/activity_splash.xml" value="0.33" />
+        <entry key="..\:/movieStudy/weatherpart/src/main/res/layout/activity_weather_main.xml" value="0.14479166666666668" />
+        <entry key="..\:/movieStudy/weatherpart/src/main/res/layout/dialog_yinsi_layout.xml" value="0.1765625" />
+        <entry key="..\:/movieStudy/weatherpart/src/main/res/layout/item_single_location.xml" value="0.1984375" />
+        <entry key="..\:/movieStudy/weatherpart/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.17552083333333332" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

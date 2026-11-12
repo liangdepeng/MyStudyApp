@@ -9,6 +9,7 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.dpjh.miji.R
+import com.dpjh.miji.database.FileParseUtils
 import com.dpjh.miji.databinding.ActivityJihMainBinding
 import com.dpzz.lib_base.addAllSafely
 import com.dpzz.lib_base.base.BaseActivity
@@ -102,6 +103,11 @@ class JiHMainActivity : BaseActivity<ActivityJihMainBinding>() {
                 delay(1000)
                 progressDialog.dismiss()
             }
+        }
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            // 初始化源数据库
+            FileParseUtils.initAssetDbFile()
         }
     }
 

@@ -75,6 +75,7 @@ class AppUpdateManager {
                 val url = String(bytes)
                 val path: String = activity.filesDir.absolutePath
                 ToastUtil.show2("开始下载，稍后自动安装")
+
                 MainScope().launch(Dispatchers.Main){
                     dialog.dismiss()
                     delay(2000)

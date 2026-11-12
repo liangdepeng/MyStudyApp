@@ -7,10 +7,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.widget.Toast;
 
 
 public class WidgetManager {
-    public static void requestPinAppWidget(Context context,Class<?> componentClazz) {
+    public static void requestPinAppWidget(Context context, Class<?> componentClazz) {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         ComponentName widgetProvider = new ComponentName(context, componentClazz);
 
@@ -31,20 +32,28 @@ public class WidgetManager {
 
 
     // 删除小组件
-    public static void deleteAppWidget(Context context,Class<?> componentClazz) {
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-        ComponentName widgetProvider = new ComponentName(context, componentClazz);
-        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(widgetProvider);
-//        Intent intent = new Intent(AppWidgetManager.ACTION_APPWIDGET_DELETED);
-//        for (int appWidgetId : appWidgetIds) {
-//            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-//            context.sendBroadcast(intent);
-//        }
+    public static void deleteAppWidget(Context context, Class<?> componentClazz) {
 
-        AppWidgetHost appWidgetHost = new AppWidgetHost(context, 0);
-        for (int appWidgetId : appWidgetIds) {
-            appWidgetHost.deleteAppWidgetId(appWidgetId);
+        try {
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            ComponentName widgetProvider = new ComponentName(context, componentClazz);
+            int[] appWidgetIds = appWidgetManager.getAppWidgetIds(widgetProvider);
+            Intent intent = new Intent(AppWidgetManager.ACTION_APPWIDGET_DELETED);
+            for (int appWidgetId : appWidgetIds) {
+                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+                context.sendBroadcast(intent);
+            }
+
+//            AppWidgetHost appWidgetHost = new AppWidgetHost(context, 0);
+//            for (int appWidgetId : appWidgetIds) {
+//                appWidgetHost.deleteAppWidgetId(appWidgetId);
+//            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+
 
     }
 }

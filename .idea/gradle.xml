@@ -4,20 +4,25 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="11" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/batteryinfo" />
+            <option value="$PROJECT_DIR$/developtools" />
+            <option value="$PROJECT_DIR$/imapplication" />
             <option value="$PROJECT_DIR$/lib_base" />
+            <option value="$PROJECT_DIR$/lib_utils" />
             <option value="$PROJECT_DIR$/lib_video" />
+            <option value="$PROJECT_DIR$/mjihpart" />
             <option value="$PROJECT_DIR$/mvpart" />
             <option value="$PROJECT_DIR$/weatherpart" />
+            <option value="$PROJECT_DIR$/weightapp" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

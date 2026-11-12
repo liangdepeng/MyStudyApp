@@ -23,7 +23,8 @@ var <T : View> T.lastClickMills: Long
     }
 
 // 防止频繁点击
-fun <T : View> T.setonMyClickListener(delayMills: Long = 500L, block: (T) -> Unit) {
+fun <T : View> T.setonMyClickListener(delayMills: Long = 500L, block: (
+        T) -> Unit) {
     setOnClickListener {
         if (System.currentTimeMillis() - lastClickMills > delayMills) {
             block.invoke(this)

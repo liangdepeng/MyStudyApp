@@ -12,6 +12,23 @@ dependencyResolutionManagement {
             url "http://maven.rongcloud.cn/repository/maven-releases/"
         }
 
+        maven { url 'E://aalocalAndroidMaven' }
+
+        maven {
+            url = 'https://packages.aliyun.com/maven/repository/2400624-release-S1KTH3/'
+            credentials {
+                username = '64b8942d9c512a7fe90cbf90'
+                password = 'oBCp2ShKxe_r'
+            }
+        }
+        maven {
+            url = 'https://packages.aliyun.com/maven/repository/2400624-snapshot-IHY4tS/'
+            credentials {
+                username = '64b8942d9c512a7fe90cbf90'
+                password = 'oBCp2ShKxe_r'
+            }
+        }
+
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon

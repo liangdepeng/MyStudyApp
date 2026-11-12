@@ -92,7 +92,7 @@ public class DataBaseDao {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-//        database.close();
+//        database.close();2.33.633.36
         return locationBeans;
     }
 

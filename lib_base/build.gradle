@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'maven-publish'
 }
 //apply plugin: 'kotlin-android'
 
@@ -105,6 +106,50 @@ dependencies {
 
     implementation 'com.caverock:androidsvg:1.4'
 }
+
+afterEvaluate {
+    publishing {
+        repositories {
+
+            maven {
+//              自定义目录
+                url = uri('E://aalocalAndroidMaven')
+            }
+
+//            默认情况下，mavenLocal() 方法将文件发布到以下目录中的本地 Maven 仓库：
+//            Windows：C:\Users\你的用户名\.m2\repository
+//            mavenLocal()
+
+//          发布到阿里云maven
+//            maven {
+//                // 正式版
+//                //url = 'https://packages.aliyun.com/maven/repository/2400624-release-S1KTH3/'
+//                // 测试版
+//                url = 'https://packages.aliyun.com/maven/repository/2400624-snapshot-IHY4tS/'
+//                credentials {
+//                    username = '64b8942d9c512a7fe90cbf90'
+//                    password = 'oBCp2ShKxe_r'
+//                }
+//            }
+        }
+        publications {
+            // Creates a Maven publication called "release".
+            makeAarToMaven(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+                // You can then customize attributes of the publication as shown below.
+                groupId = 'com.ldp.base'
+                artifactId = 'lib_base'
+                // 测试版
+                version = '1.0.0-SNAPSHOT'
+                // 正式版
+                //version = '2.0.0'
+            }
+        }
+    }
+}
+
+
 //repositories {
 //    mavenCentral()
 //}

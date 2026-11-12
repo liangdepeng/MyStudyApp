@@ -47,7 +47,7 @@ public class PackageUtil {
             int targetSdkVersion = context.getApplicationInfo().targetSdkVersion;
             if (targetSdkVersion >= 23 && Build.VERSION.SDK_INT > 23) {
                 intent.setDataAndType(FileProvider.getUriForFile(
-                        context, "com.dpzz.mine.fileprovider",
+                        context, context.getPackageName()+".mine.fileprovider",
                         new File(path)), "application/vnd.android.package-archive");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);

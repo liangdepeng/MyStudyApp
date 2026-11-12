@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MvApp">
+        <activity
+            android:name=".WidgetTargetActivity"
+            android:exported="false" />
+
         <receiver
             android:name=".NewAppWidget3"
             android:exported="false">
@@ -63,6 +67,11 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/new_app_widget_info" />
         </receiver>
+
+        <activity android:name=".Test1Activity"/>
+        <activity android:name=".Test2Activity"/>
+        <activity android:name=".DragTestActivity"/>
+
     </application>
 
 </manifest>
